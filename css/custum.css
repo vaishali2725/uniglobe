@@ -1,0 +1,266 @@
+body h3,h2{
+	font-family:allerregular !important;
+}
+
+.add-user{
+	margin-right: 15px!important;
+}
+
+.btn-circle{
+    border-radius: 30px!important;
+    margin-right: 0px;
+    height: 35px;
+  /*   width: 100px; */
+   font-size:15px;
+   
+}
+.cancelbtn{
+	margin-right:25px;
+}
+.adduserform input[]{
+	border-radius:3px;
+}
+.adduserform .form-control:focus{
+	border-color:#3A404A;
+}
+.adduserform  .btn-default:hover{
+	background-color:rgb(54, 198, 211);
+	color:#fff;
+}
+.page-container{
+	margin-top: 46px!important;
+}
+.success_msg{
+	color:#C02A2A;
+	font-size:20px;
+	margin-bottom:20px;
+}
+.testclass{
+	background-color:#FF9999;
+	color:#fff;
+}
+
+.menu-toggler.sidebar-toggler{
+	display:none;
+}
+
+/* @parag 26/5/2016 */
+
+.ng-scope{
+	margin-bottom:0 !important;
+}
+.success_msg{
+	margin-bottom:10px;
+}
+.caption-subject.font-green.bold.uppercase{
+	float:left;
+	margin-bottom:10px;
+	
+}
+.leadtitle{
+	font-size:16px;
+}
+.portlet.light.portlet-fit>.portlet-body {
+    padding: 15px 15px 15px !important;
+}
+.caption-subject.font-green-sharp.bold.uppercase{
+	font-size:16px;
+	color: #666;
+}
+h3.page-title{	
+	margin: 20px 0px 0px;
+	font-size: 23px;
+}
+.tab-pane .file-upload{
+	float: left;
+    width: 100%;
+    margin-bottom: 20px;
+	margin-top: 20px;
+}
+.tab-pane .file-upload button{
+	margin-top:15px;
+}
+.fileinput.fileinput-new{
+	float: left;
+    width: 50%;
+}
+.clearfix.margin-top-10{
+	float: left;
+    height: 50px;
+}
+
+/* leads details */
+.label.label-sm{
+	margin-left:10px;
+}
+
+/* dashboard */
+.feeds li .col1>.cont>.cont-col2>.desc{
+	padding-bottom: 10px !important;
+	margin-left: 50px !important;
+}
+
+/* view leads */
+.labl-style{
+	padding:0 !important;
+	/* text-align: right; */
+}
+.mail-id-style p{
+	padding:0 !important;
+}
+/* .disp-struct{
+	background: #63818F;
+    padding-top: 6px;
+    color: #fff;
+    height: 35px;
+} */
+.disp-struct{	
+    padding-top: 6px;   
+    height: 35px;
+}
+
+
+
+.mail-body{
+	padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+}
+.mail-body .form-section{
+	margin: 5px 0 !important;
+    
+}
+.mail-body h2.margin-bottom-20.ng-binding{
+	margin:0 !important;
+}
+.fon-margin{
+	margin-right:10px;
+}
+
+
+
+
+/* new fonts */
+
+@font-face {
+    font-family: 'allerregular';
+    src: url('../fonts/aller_rg-webfont.woff2') format('woff2'),
+         url('../fonts/aller_rg-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+	
+	 
+}
+@font-face {
+	font-family: 'montserratregular';
+    src: url('../fonts/montserrat-regular-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/**********new css********/
+.radiobtn .radio input[type=radio]
+{
+	    margin-left: -8px !important;
+}
+.padding-0{
+	padding:0;
+}
+.margin-top{
+	margin-top:15px;
+}
+.w-100{
+	width:100%;
+	float:left;
+}
+.btn-pad{
+	padding-right:25px !important;
+}
+.margin-0{
+	margin-bottom:0 !important; 
+}
+.form-actions.right.todo-form-actions{
+	border:none;
+}
+.desc-wrd{
+	    word-break: break-all;
+}
+.th-width .th1{
+	width:70px;
+}
+.th-width .th3{
+	width:100px;
+}
+.dashboard-stat .details .number {
+padding-top: 17px !important;}
+.csv-frm label {
+    font-size: 14px !important;
+}
+.margin-bottom{
+margin-bottom: 20px;	
+}
+.margin-bottom15{
+margin-bottom: 15px;	
+}
+.choose{
+    float: left;
+    margin-right: 18px;
+    color: #1d9ced;	
+}
+
+.lead-transf{
+	margin:10px 0;
+	float:right;
+}
+.delete-lead{
+	margin:10px 0; padding:0;
+	float:right;
+}
+.scroll-to-top {
+    bottom: 40px !important;
+}
+.ngColMenu .ngColList{
+	padding-left:25px;
+}
+/*****chat box*****/
+.chat-usr-name {
+    font-weight: 600;
+}
+#live-chat-list header h5 {
+    font-weight: 600;
+}
+.online-usr-ico .dropdown-toggle{
+	color:#fff;
+}
+.online-usr-ico #status_menu {
+    overflow: hidden;
+}
+
+
+/* 16/6/16  @parag*/
+.al_leads{
+	width: 100%;
+    float: left;
+    padding: 40px;
+}
+.my_lead_style{
+	width:100%;
+	float:left;
+	padding:30px;
+}
+.my_lead_style .todo-form-actions{
+	background:#fff !important;
+	width:100%;
+	float:left;
+	padding-left:0 !important;
+}
+
+.modal-backdrop {
+    z-index: 1 !important;
+}
+
+#live-chat-list {
+	display:none !important;
+}

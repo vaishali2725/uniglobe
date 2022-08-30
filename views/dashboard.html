@@ -1,0 +1,231 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+    </ul>
+  
+</div>
+<h3 class="page-title"> Dashboard </h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="DashboardController" class="margin-top ">
+   <!-- BEGIN DASHBOARD STATS -->
+    <div class="row" ng-repeat="s in data">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat blue">
+                <div class="visual">
+                    <i class="fa fa-comments"></i>
+                </div>
+                <div class="details">
+				
+                    <div class="number"> {{s.active_leads}} </div>
+                    <div class="desc"> Active leads </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat red">
+                <div class="visual">
+                    <i class="fa fa-bar-chart-o"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> {{s.prospective_leads}}</div>
+                    <div class="desc"> New Leads </div>
+                </div>
+               
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat green">
+                <div class="visual">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> {{s.demo_leads}}</div>
+                    <div class="desc"> Irrelevant Leads </div>
+                </div>
+             
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat purple">
+                <div class="visual">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> {{s.nonactive_leads}}</div>
+                    <div class="desc"> Not Interested</div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <!-- END DASHBOARD STATS -->
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+           
+			<div class="portlet light bordered ">
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        <i class="fa fa-users"></i>
+                        <span class="caption-subject font-red bold uppercase">All Users</span>
+                        <span class="caption-helper hide">weekly stats...</span>
+                    </div>
+                   
+                </div>
+                <div class="portlet-body" >
+				
+   
+                    
+                    <div class="table-scrollable table-scrollable-borderless" style="overflow-y: auto !important; max-height: 500px;">
+                        <table class="table table-hover table-light">
+                            <thead>
+
+                                <tr class="uppercase">
+                                    <th colspan="">Sales Manager</th>
+                                    <th> Status</th>
+                                    
+                                    
+                                </tr>
+                            </thead>
+					      
+                            <tr  ng-repeat="us in ustatus">
+                               
+									 
+                                <td>
+                                    <a href="javascript:;" class="primary-link">{{us.firstName}} {{us.lastName}}</a>
+                                </td>
+							
+                                 <td>
+								    <div ng-if="us.chat_status==1"><img style="height:15px" class="user-pic rounded" src="assets/global/img/acive.png">Online</div>
+									<div ng-if="us.chat_status==0"><img style="height:15px" class="user-pic rounded" src="assets/global/img/deactive.png">Offline</div>
+									<div ng-if="us.chat_status==2"><img style="height:15px" class="user-pic rounded" src="assets/global/img/deactive.png">Away</div>
+									<div ng-if="us.chat_status==3"><img style="height:15px" class="user-pic rounded" src="assets/global/img/deactive.png">Busy</div>
+                                   
+									</td>
+                            </tr>							
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light bordered ">
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        <i class="icon-bar-chart font-red"></i>
+                        <span class="caption-subject font-red bold uppercase">Leaderboard</span>
+                        <span class="caption-helper hide">weekly stats...</span>
+                    </div>
+                   
+                </div>
+                <div class="portlet-body" >
+                    
+                    <div class="table-scrollable table-scrollable-borderless" style="overflow-y: auto !important; max-height: 500px;" >
+                        <table class="table table-hover table-light">
+                            <thead>
+
+                                <tr class="uppercase">
+                                    <th colspan="2">Sales Manager</th>
+                                    <th> Total Leads</th>
+                                    <th> Completed </th>
+                                    <th> Pendings </th>
+                                    
+                                </tr>
+                            </thead>
+					      
+                            <tr  ng-repeat="l in leaderboard">
+                                <td class="fit">
+								    </td>
+									 
+                                <td>
+                                    <a href="javascript:;" class="primary-link">{{l.firstName}} {{l.lastName}}</a>
+                                </td>
+							
+                                <td class="text-center"> {{l.total_leads}}</td>
+                                <td class="text-center"> {{l.complete_lead}} </td>
+                                <td class="text-center"> {{l.pending_lead}} </td>
+                        
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light bordered tasks-widget">
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        <i class="icon-bar-chart font-green hide"></i>
+                        <span class="caption-subject font-green bold uppercase">Targets</span>
+                        <span class="caption-helper"></span>
+                    </div>
+                    <div class="inputs">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                <i class="icon-magnifier"></i>
+                                <input type="text" class="form-control form-control-solid" placeholder="search..." ng-model="targetlist"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                     <div class="table-scrollable table-scrollable-borderless"  style="overflow-y: auto !important; max-height: 500px;">
+                        <table class="table table-hover table-light">
+                            <thead>
+
+                                <tr class="uppercase">
+                                    <th colspan="1" class="text-center">Sales Manager</th>
+                                    <th class="text-center"> Target</th>
+								    <th class="text-center">Completed</th>
+                                    <th class="text-center"> Start Date </th>
+                                    <th class="text-center"> End Date </th>
+                                    
+                                </tr>
+                            </thead>
+					      
+                            <tr  ng-repeat="t in targets |filter:targetlist">
+                                
+									 
+                                <td class="text-center">
+                                    <a href="javascript:;" class="primary-link">{{t.firstName}} {{t.lastName}}</a>
+                                </td>
+							    <td class="text-center"> {{t.target}}</td>
+                                <td class="text-center"> {{t.count}}</td>
+                                <td class="text-center"> {{t.startdate}} </td>
+                                <td class="text-center"> {{t.enddate}} </td>
+                            </tr>
+                          
+                        </table>
+                    </div>
+                    </div>
+           
+                </div>
+            </div>
+            <!-- END PORTLET-->
+       
+
+        </div>
+		 </div>
+    </div>
+    
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS & CSS -->
+<script>
+    Dashboard.init();
+</script>
+
+
+<!-- BEGIN MAIN JS & CSS -->

@@ -1,0 +1,185 @@
+
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Set Target</a>
+        </li>
+    </ul>
+    
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12 padding-0">
+        <!-- BEGIN TODO SIDEBAR -->
+        <div class="todo-ui">
+            
+            <!-- END TODO SIDEBAR -->
+            <!-- BEGIN TODO CONTENT -->
+            <div class="todo-content">
+                <div class="portlet light">
+                    <!-- PROJECT HEAD -->
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-green hide"></i>
+                            <span class="caption-helper"></span> &nbsp;
+                            <span class="caption-subject font-green bold uppercase">Set Target</span>
+                        </div>
+                      <div class="caption col-md-12 padding-left">
+                            <i class="icon-bar-chart font-green hide"></i>
+                            <span class="caption-helper"></span> &nbsp;
+                            <span><a href="#/All_Leads" class="btn cancelbtn btn-circle btn-md btn-primary">Transfer Lead</a></span>
+                        </div>
+
+                    </div>
+   <!-- end PROJECT HEAD -->
+<div class="portlet-body">
+   <div class="row">
+     <div class="col-md-12 col-sm-12">
+        <div style="min-height: 600px;">
+           <form class="form-horizontal adduserform" name="userForm" ng-submit="setTarget()">
+               <div class="form">
+                                         
+
+ <div class="form-group add-user col-md-6 col-sm-12" ng-class="{ 'has-error' : userForm.seluser.$invalid && !userForm.seluser.$pristine }">
+ 
+  <select ng-model="user.userid" class="select2 form-control" ng-change="get_selected_user_leads(user.userid)" 
+       data-ng-options="u.userid as u.firstName for u in user_data" required>
+      <option value="">Select User</option>
+  </select> 
+
+<p ng-show="userForm.seluser.$invalid && !userForm.seluser.$pristine" class="help-block">Please select User </p>
+ </div>
+ 
+   <div class="form-group add-user col-md-6 col-sm-12" ng-class="{ 'has-error' : userForm.target.$invalid && !userForm.target.$pristine }">
+  <input type="number" class="form-control ng-invalid ng-invalid-required ng-touched" ng-model="user.target" name="target" placeholder="Enter Target" required> 
+ <p ng-show="userForm.target.$invalid && !userForm.target.$pristine" class="help-block">Please End Target </p>
+ </div>
+ 
+ 
+ <div class="form-group add-user col-md-6 col-sm-12" ng-class="{ 'has-error' : userForm.srtdate.$invalid && !userForm.srtdate.$pristine }">
+  <input type="text" id="example2" class="form-control ng-invalid ng-invalid-required ng-touched" ng-model="user.startdate" name="srtdate" placeholder="Select Start Date" required>
+ <p ng-show="userForm.srtdate.$invalid && !userForm.srtdate.$pristine" class="help-block">Please enter Start Date </p>
+  </div>
+ 
+ <div class="form-group add-user col-md-6 col-sm-12" ng-class="{ 'has-error' : userForm.enddate.$invalid && !userForm.enddate.$pristine }">
+  <input type="text" id="example3" class="form-control ng-invalid ng-invalid-required ng-touched" ng-model="user.enddate" name="enddate" placeholder="Select End Date" required> 
+ <p ng-show="userForm.enddate.$invalid && !userForm.enddate.$pristine" class="help-block">Please End Date </p>
+ </div>
+ 
+  <div ng-show="showleads"> 
+  Total Leads : {{lead_count}}
+  </div>
+  
+ <!-- <p ng-show="userForm.tltlead.$invalid && !userForm.tltlead.$pristine" class="help-block">Please End Date </p> -->
+ 
+
+ 
+ 
+ <div class="form-actions right todo-form-actions w-100">
+ <input class="btn btn-circle btn-md btn-primary" type="submit" ng-model="submit" value="Set Target">
+ <button class="btn btn-circle cancelbtn btn-md btn-danger" >Cancel</button>
+</div>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO CONTENT -->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>User Added successfully </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="targetModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Target Set successfully </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="targeterror" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Can not set target! Because previous targets pending</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
+<!-- END PAGE CONTENT-->
+<script>
+    AppTodo2.init(); // init todo page
+	
+$(function(){
+   
+	
+	$('#example2').datepicker({
+        format: 'yyyy/mm/dd'
+    }).on('changeDate',  function (ev) {
+        $(this).datepicker('hide');
+    });
+	
+	$('#example3').datepicker({
+        format: 'yyyy/mm/dd'
+    }).on('changeDate',  function (ev) {
+        $(this).datepicker('hide');
+    });
+	
+	
+          
+        
+    });        
+
+
+
+</script>

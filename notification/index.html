@@ -1,0 +1,88 @@
+<html data-ng-app="exampleApp">
+
+    <head>
+        <title>Angular Web Notification Example</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/sagiegurari/simple-web-notification/master/web-notification.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/sagiegurari/angular-web-notification/master/angular-web-notification.js"></script>
+       
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+       
+    </head>
+
+    <body>
+        <form class="notification-form" ng-controller="exampleForm">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Notification Title" ng-model="title" />
+            </div>
+            <div class="form-group">
+                <label for="message">Notification Text</label>
+                <textarea class="form-control" rows="3" id="message" placeholder="Notification Text" ng-model="text"></textarea>
+            </div>
+            <button type="button" class="show-button btn btn-primary" notification-title="title" notification-text="text" ng-click="show()">Show Notification</button>
+        </form>
+    </body>
+
+</html>
+
+<script>
+angular.module('exampleApp', [
+    'angular-web-notification'
+]);
+
+angular.module('exampleApp').controller('exampleForm', ['$rootScope', '$scope',function($rootScope, $scope,) {
+$scope.show = function(){
+
+	webNotification.showNotification('Example Notification', {
+                body: 'Notification Text...',
+                icon: 'my-icon.ico',
+                onClick: function onNotificationClicked() {
+                    console.log('Notification clicked.');
+                },
+                autoClose: 4000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+            }, function onShow(error, hide) {
+                if (error) {
+                    window.alert('Unable to show notification: ' + error.message);
+                } else {
+                    console.log('Notification Shown.');
+
+                    setTimeout(function hideNotification() {
+                        console.log('Hiding notification....');
+                        hide(); //manually close the notification (you can skip this if you use the autoClose option)
+                    }, 5000);
+                }
+            });
+			}
+
+}]);
+angular.module('exampleApp').directive('showButton', ['webNotification', function (webNotification) {
+return {
+    
+    link: function (scope, element) {
+        element.on('click', function onClick() {
+            webNotification.showNotification('Example Notification', {
+                body: 'Notification Text...',
+                icon: 'my-icon.ico',
+                onClick: function onNotificationClicked() {
+                    console.log('Notification clicked.');
+                },
+                autoClose: 4000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+            }, function onShow(error, hide) {
+                if (error) {
+                    window.alert('Unable to show notification: ' + error.message);
+                } else {
+                    console.log('Notification Shown.');
+
+                    setTimeout(function hideNotification() {
+                        console.log('Hiding notification....');
+                        hide(); //manually close the notification (you can skip this if you use the autoClose option)
+                    }, 5000);
+                }
+            });
+        });
+    }
+};
+}]);
+</script>

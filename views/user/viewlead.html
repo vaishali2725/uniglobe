@@ -1,0 +1,595 @@
+<style>
+.messagebody{
+margin-top:30px;
+margin-left:10px;
+}
+.mailheaderinfo{
+background-color:#f9f9f9;
+}
+.txtlimit {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   max-width:200px;
+   line-height: 16px;     
+   max-height: 25px;      
+   -webkit-line-clamp: 2; 
+   -webkit-box-orient: vertical;
+}
+.rplybtn{
+  float: right;
+  margin-right: 20px;
+  margin-top: -118px;
+}
+.replybox{
+border:1px solid grey;
+height:200px;
+margin:40px 50px;
+}
+.replyto{
+ border-bottom:1px solid grey;
+ height:30px;
+}
+.replymsg{
+ height:120px;
+}
+.sendbtn{
+ border-top:1px solid grey;
+}
+.replyto .mailto{
+    height: 120px;
+    width: 100%;
+}
+
+.replymsg .msg{
+    height: 120px;
+    width: 100%;
+}
+.sendbtn input[type='submit']{
+  margin: 21px;
+    padding: 6px 26px;
+}
+    
+</style>
+
+
+
+<div class="row" style="margin-bottom:30px;" >
+
+<div class="col-md-5" style="margin-bottom:20px;">
+<td><a href="#/My_Leads"><button type="button" class="todo-username-btn btn btn-circle btn-default btn-sm" >&nbsp;Show Leads&nbsp;</button></a>
+</span></td>
+</div>
+<div class="col-md-12">
+<div class="col-md-5">
+<div class="tab-pane active new-details" id="tab_3">
+<div class="portlet box blue">
+<div class="portlet-title">
+<div class="caption">
+<i class="fa fa-gift"></i>Leads Details </div>
+</div>
+<div class="portlet-body form" ng-repeat="led in data.leadDetails">
+
+<div class="form-body" >
+
+<div class="row">
+<h4 class="margin-bottom-20"><i class="fa fa-user" aria-hidden="true"></i> Lead Owner : {{led.firstName}} {{led.lastName}} </h4>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">City :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.usercity}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Mail :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.useremail}} </p>
+</div>
+</div>
+</div>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Phone :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.userphone}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Designation :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.designation}} </p>
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+<h4 class="margin-bottom-20"><i class="fa fa-user" aria-hidden="true"></i> Client Name : {{led.client}} </h4>
+<div class="row">
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Status :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.status}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Client Type :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.clientType}} </p>
+</div>
+</div>
+</div>
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Source:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> <span ng-if="led.source != 'Other'">{{led.source}}</span><span ng-if="led.source == 'Other'">{{led.other_source}}</span></p>
+</div>
+</div>
+</div>
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Technologies:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.technologies}}</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Lead Register:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.register_date}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">A/C Number:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.ac_number}} </p>
+</div>
+</div>
+</div>
+
+<h4 class=" margin-bottom-20 col-md-12 margin-top1"><i class="fa fa-map-marker" aria-hidden="true"></i> Contact Details</h4>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="contact-title">Email :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.email}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="contact-title">Alternative E-mail:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.altemail}} </p>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-phone" aria-hidden="true"></i> <span class="contact-title">Contact No:</span></label>
+<div class="col-md-7">
+<p class="form-control-static">{{led.phone}} </p>
+</div>
+</div>
+</div>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-phone" aria-hidden="true"></i><span class="contact-title">Alternative Contact no:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.altphone}}</p>
+</div>
+</div>
+</div>
+</div>
+<!--/row-->
+<div class="row">
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-thumb-tack" aria-hidden="true"></i><span class="contact-title"> City :</span></label>
+<div class="col-md-7">
+<p class="form-control-static">{{led.city}}</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-globe" aria-hidden="true"></i><span class="contact-title"> Country:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.country}}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>	
+
+
+<div class="col-md-7">
+<div class="action-form" >
+<form name="actionForm" ng-submit="addAction(action)" >
+
+<div class="form-group col-md-6 col-sm-6 padding-0" ng-class="{ 'has-error' : actionForm.first_action.$invalid && !actionForm.first_action.$pristine }">
+<div class="input-icon right">
+<select class="form-control " id="status" name="first_action" ng-model="action.first_action" onchange="" ng-click="first_action(action.first_action)" required >
+<option value="">Select Action</option>
+ <option value="First Call">First Call </option>
+ <option value="Follow-Up">Follow-Up </option>
+ <option value="No-Reply">No-Reply </option>
+ <option value="Email">Email</option>
+ <option value="Not Reachable">Not Reachable</option>
+ <option value="Switched Off">Switched Off</option>
+ <option value="Wrong Details">Wrong Details</option>
+  <option value="Other">Other</option>
+</select>
+<p ng-show="actionForm.first_action.$invalid && !actionForm.first_action.$pristine" class="help-block">Please select first_action</p> 
+</div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 padding-0" ng-show="next_action" ng-class="{ 'has-error' : actionForm.nextaction.$invalid && !actionForm.nextaction.$pristine }">
+<div class="input-icon right">
+<select class="form-control " id="nextaction" name="nextaction" ng-model="action.next_action" onchange="" required >
+<option value="">Next Action</option>
+ <option value="Call"> Call </option>
+ <option value="Email">Email</option>
+ <option value="Meeting">Meeting</option>
+ <option value="Other">Other</option>
+ <option value="Close_Lead">Close Lead</option>
+</select>
+<p ng-show="actionForm.nextaction.$invalid && !actionForm.nextaction.$pristine" class="help-block">Please select status</p> 
+</div>
+</div>
+ 
+  <input ng-show="" class="form-control" type="text" name="lead_id" ng-model="action.leadid" ng-init="action.leadid=leadid" readonly="" />
+
+
+<input type="text" ng-show="" class="form-control"  ng-model="action.action_date" >
+
+<div class="form-group " ng-class="{ 'has-error' : actionForm.action_dec.$invalid && !actionForm.action_dec.$pristine }">
+<label>Description</label>
+<div class="input-icon right">
+  <textarea class="form-control" ng-model="action.action_des" name="action_dec" rows="3" required></textarea>
+  <p ng-show="actionForm.action_dec.$invalid && !actionForm.action_dec.$pristine" class="help-block">Description is required</p>
+</div>
+</div>
+
+
+
+
+<div class="form-group">
+ 
+   <div class="col-md-6 padding-0" ng-show="datepicker">
+   <div class="form-group " ng-class="{ 'has-error' : actionForm.action_dec.$invalid && !actionForm.action_dec.$pristine }" >
+<div class="input-group date form_datetime" >
+ <input type="text" id="datetimepicker"  ng-model="action.appointmentDate" name="appointmentDate"  placeholder="Next Action Date And Time"class="form-control" >
+ <span class="input-group-btn">
+   <button class="btn default date-set" type="button">
+      <i class="fa fa-calendar"></i>
+   </button>
+ </span>
+</div>
+</div>
+</div>
+
+<input class="btn btn-circle btn-md btn-primary" type="submit" ng-model="$scope.action.submit" value="submit">
+
+
+</form>
+</div>
+
+<div class="portlet-body" style="margin-top:30px;">
+<table class="table table-striped table-bordered table-advance table-hover th-width">
+<thead>
+<tr>
+<th class="th1">Call No.</th>
+<th class="th1">First action</th>
+<th class="th1">Next action</th>
+<th class="hidden-xs"></i> Descrition </th>
+<th class="th3"> Action Date & Time </th>
+<!-- <th class="th3"> Next Action Date & Time </th> -->
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="action in data.action">
+<td><a href="javascript:;">{{action.actionid}}</a></td>
+<td class="hidden-xs"> {{action.first_action}} </td>
+<td class="hidden-xs"> {{action.next_action}} </td>
+<td> {{action.action_des}}</td>
+<td>{{action.action_date}}</td>
+<!-- <td>{{action.appointmentDate}}</td> -->
+</tr>
+</tbody>
+</table>
+</div>
+
+</div> 
+
+</div>
+</div>
+
+<!-- <div class="profile-content">
+  <div class="row">
+     <div class="col-md-12" >
+       <div class="portlet light ">
+         <div class="portlet-title">
+           
+		    <div class="caption caption-md">
+              <button data-toggle="modal" data-target="#emailModal" class="btn btn-default btn-success">Create new</button>
+            </div>
+		    <div class="caption caption-md" style="margin-left:20px">
+              <button ng-click="showsentbox()" class="btn btn-default btn-green btn-success">Sent Mail</button>
+            </div>
+		    <div class="caption caption-md" style="margin-left:20px">
+              <button ng-click="showInbox()" class="btn btn-default btn-green btn-success">Inbox</button>
+            </div>
+		  
+		   
+         </div>
+       </div>
+
+
+
+<div style="border:1px solid #eee;height:600px">
+<div ng-hide="sentboxview">
+ <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+<thead>
+<tr>
+ <th>To</th>
+<th>Subject</th>
+<th>Message</th>
+<th>Date</th>
+</tr>
+</thead>                            
+<tbody>
+<tr ng-repeat="m in mail_history" ng-click="showsentmailbody(m)">
+<td>{{m.client_name}}</td>
+<td>{{m.subject}}</td>
+<td>{{m.message}}</td>
+<td>{{m.email_date}}</td>
+<!-- <td><a href="#/view_leads/{{lead.leadid}}"><button type="button" class="todo-username-btn btn btn-circle btn-default btn-sm" >&nbsp;View&nbsp;</button></a></span></td> 
+</tr>
+</tbody>
+</table>
+</div>
+<div ng-show="inboxview">
+ <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+<thead>
+<tr>
+ <th>From</th>
+<th>Subject</th>
+<th>Message</th>
+<th>Date</th>
+</tr>
+</thead>                            
+<tbody>
+<tr  ng-repeat="I in data1.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))" ng-click="showmailbody(I)">
+<td>{{I.from}}</td>
+<td>{{I.subject}}</td>
+<td class="txtlimit">{{I.message}}</td>
+<td>{{I.date1}}</td>
+</tr>
+</tbody>
+</table>
+<pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+</div>
+
+ <div ng-show="sentmail_body" class="mailbody">
+  <div class="mailheaderinfo">
+     <div class="mailsubject">
+       <h3>{{sentmailbody.subject}}</h3>
+	 </div>  
+	 <div class="mailheader">
+	   From : &nbsp;<b>{{sentmailbody.useremail}}</b><br/><br/>
+	   To &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; <b>{{sentmailbody.email}}</b><br/><br/>
+	   date &nbsp;:&nbsp; <b>{{sentmailbody.email_date}}</b>
+	 </div> 
+  </div>
+  <div class="messagebody">
+    <div class="mtext">
+      {{sentmailbody.message}}
+	</div> 
+	<div class="attach">
+	  <a href="/projects/ci/CRMCHAT/attachment/4-adminside.png" download>{{sentmailbody.filen}}</a>
+    </div>
+  </div>
+</div> 
+
+<div ng-show="mail_body" class="mailbody">
+  <div class="mailheaderinfo">
+     <div class="mailsubject">
+       <h3>{{fullmessagebody.subject}}</h3>
+	 </div>  
+	 <div class="mailheader">
+	   From : &nbsp;<b>{{fullmessagebody.from}}</b><br/><br/>
+	   To &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; <b>{{fullmessagebody.to}}</b><br/><br/>
+	   date &nbsp;:&nbsp; <b>{{fullmessagebody.date1}}</b>
+	 </div> 
+	  <div class="rplybtn">
+	    <div class="caption caption-md" >
+              <button ng-click="showreply_box()" class="btn btn-default btn-green btn-success">Reply</button>
+        </div>
+	 </div>
+  </div>
+  <div class="messagebody">
+    <div class="mtext">
+      {{fullmessagebody.message}}
+	</div> 
+	<div class="attach">
+	  <a href="/projects/ci/CRMCHAT/attachment/4-adminside.png" download>{{fullmessagebody.filen}}</a>
+    </div>
+  </div>
+  
+  <div ng-show="showreplybx" class="replybox">
+
+<form name="replyForm" ng-submit="sendreply(message,fullmessagebody.to,fullmessagebody.from)" >
+ 
+ 
+<div class="form-group " ng-class="{ 'has-error' : replyForm.message.$invalid && !replyForm.message.$pristine }">
+<div class="input-icon right">
+  <textarea class="form-control" ng-model="message" name="message" rows="5"></textarea>
+  <p ng-show="replyForm.message.$invalid && !replyForm.message.$pristine" class="help-block">Please Write Message </p>
+</div>
+</div>
+
+
+ <div class="sendbtn">
+<input class="btn btn-circle btn-md btn-primary" type="submit" ng-model="submit" value="submit">
+  </div>
+
+</form>
+
+ 
+</div>
+  
+</div>
+
+
+
+ </div>	 
+</div>
+</div>
+</div> 
+
+ -->
+ 
+ 
+<div id="emailModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+     
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <div class="row">
+  <div class="col-md-12">
+   <div class="todo-ui">
+      <div class="todo-content">
+         <div class="portlet light">
+
+            <div class="portlet-title">
+               <div class="caption">
+                  <i class="icon-bar-chart font-green hide"></i>
+                  <span class="caption-helper"></span> &nbsp;
+                  <span class="caption-subject font-green bold uppercase">Email</span>
+               </div>
+			   
+            </div>
+                    <!-- end PROJECT HEAD -->
+             <div class="portlet-body">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <div >
+                     <form class="form-horizontal adduserform" name="emailForm" ng-submit="sendmail()" >
+                        <div class="form">
+   
+<div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : emailForm.leadid.$invalid && !emailForm.leadid.$pristine }">
+<select  class="select2 form-control" ng-model="cemail.client_name" name="emailid" aria-hidden="true" reqiured>
+ <option value="">Select Client</option>
+  
+   <option  ng-repeat="client in myleads" value="{{client.leadid}},{{client.clientName}},{{client.email}}">{{client.clientName}}</option>
+  
+  </select>
+<p ng-show="emailForm.leadid.$invalid && !emailForm.leadid.$pristine" class="help-block">This field is required </p>
+ </div>
+ 
+ 
+  <div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : emailForm.subject.$invalid && !emailForm.subject.$pristine }">
+   <input type="text" class="form-control" ng-model="cemail.subject" name="subject" placeholder=" subject" required> 
+   <p ng-show="emailForm.subject.$invalid && !emailForm.subject.$pristine" class="help-block">This field is required </p>
+</div>
+
+<div class="form-group add-user col-md-12 col-sm-12" ng-class="{ 'has-error' : emailForm.description.$invalid && !emailForm.description.$pristine }">
+    <div class="input-icon right">
+       <textarea class="form-control" ng-model="cemail.message" name="description"  placeholder="Enter Message" rows="3" required></textarea>
+          <p ng-show="emailForm.description.$invalid && !emailForm.description.$pristine" class="help-block">Description is required</p>
+    </div>
+</div>
+
+ <div  style="float:left;margin-left: 300px;">
+ <button class="btn btn-circle btn-md btn-primary" data-dismiss="modal" type="button" >Cancel</button>
+</div>
+<div class="form-actions right todo-form-actions">
+ <input class="btn btn-circle btn-md btn-primary" style="width:122px" type="submit" ng-model="submit" value="Send">
+</div>
+</div>
+   </form>
+  
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO CONTENT -->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+
+<div id="emailsuccessModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Mail sent successfully </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+$(function() {
+//$( "#datetimepicker" ).datetimepicker();
+var dateToday = new Date(); 
+    $( "#datetimepicker" ).datetimepicker({
+        startDate: dateToday
+    });
+
+});
+
+/*$(function() {
+//$( "#datetimepicker" ).datetimepicker();
+var dateToday = new Date(); 
+    $( "#datetimepicker1" ).datetimepicker({
+        startDate: dateToday
+    });
+
+});*/
+</script>

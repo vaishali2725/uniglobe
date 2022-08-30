@@ -1,0 +1,298 @@
+<style>
+.csvuploadform1 label{
+margin-top:10px;
+}
+.form-group .col-md-6{
+margin-bottom:12px;
+}
+</style>
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+		<i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">CSV Upload</a>
+        </li>
+    </ul>
+</div>
+ <div class="todo-content">
+                <div class="portlet light margin-0">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-green hide"></i>
+                            <span class="caption-helper"></span> &nbsp;
+                            <span class="caption-subject font-green bold uppercase">CSV Upload</span>
+                        </div>
+						
+						<div class="caption" style="float:right;">
+                            <i class="icon-bar-chart font-green hide"></i>
+                            <span class="caption-helper"></span> &nbsp;
+                           <a href="leadcsv.csv" class="btn cancelbtn btn-md btn-primary btn-circle" download> <span class="caption-subject font-green bold uppercase" style="margin-bottom:0px;">Download CSV Format</span></a>
+                        </div>
+
+                    </div>
+					</div>
+					 
+
+ </div>
+
+<div>
+ <form enctype="multipart/form-data" method="post" >
+	<div class="col-md-12 margin-bottom" >
+	<strong class="choose">Choose CSV File Here</strong>
+  <input type="file" file-reader="fileContent"/></div>
+    <!--<div>{{fileContent}}</div> -->
+    <div></div>
+ </form> 
+</div>
+
+<div style="margin-top:30px;">
+<div class="csv-frm">
+ <form name="csvuploadform1" ng-submit="upload_csvdata1()">
+ 
+ <!-- <div class="form-group">
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+     <label>User Name : </label>
+   </div>
+   <div class="col-md-8">
+	<select id="select1" name="sel_username" class="select2 form-control" ng-model="csvcolumn1"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>	
+  </div>
+ </div> 
+
+	 -->
+ <div class="form-group">	
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>Client Name</label>
+   </div>
+   <div class="col-md-8">   
+	<select id="select2" name="sel_clientName" class="select2 form-control" ng-model="csvcolumn2"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="form-group"> 
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">  
+	<label>Email</label>
+   </div>	
+   <div class="col-md-8">   
+	<select id="select3" name="sel_email" class="select2 form-control" ng-model="csvcolumn3"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>Alternate Email</label>
+   </div>
+   <div class="col-md-8">
+	<select id="select4" name="sel_altemail" class="select2 form-control" ng-model="csvcolumn4"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="form-group"> 
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>Phone</label>
+   </div>	
+   <div class="col-md-8">
+	<select id="select5" name="sel_phone" class="select2 form-control" ng-model="csvcolumn5"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>
+ 
+ <!-- <div class="form-group"> 
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>Alternate Phone</label>
+   </div>
+   <div class="col-md-8">   
+	<select id="select6" name="sel_altphone" class="select2 form-control" ng-model="csvcolumn6"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>	
+ </div> -->
+ 
+ <!-- <div class="form-group"> 
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>City</label>
+   </div>
+   <div class="col-md-8">
+	<select id="select7" name="sel_city" class="select2 form-control" ng-model="csvcolumn7"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>
+  -->
+ <div class="form-group">
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>Country</label>
+   </div> 	
+   <div class="col-md-8">
+	<select id="select8" name="sel_country" class="select2 form-control" ng-model="csvcolumn8"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>Status</label>
+   </div>
+   <div class="col-md-8">
+	<select  id="select9" name="sel_status" class="select2 form-control" ng-model="csvcolumn9"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>Source</label>
+  </div>	
+  <div class="col-md-8">
+	<select id="select10"  name="sel_source" class="select2 form-control" ng-model="csvcolumn10"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>
+ 
+<!-- <div class="form-group">
+ <div class="col-md-6 padding-0 padding-left">
+  <div class="col-md-4">
+	<label>Account Number</label>
+  </div>
+  <div class="col-md-8">
+	<select id="select11" name="sel_accountNumber" class="select2 form-control" ng-model="csvcolumn11"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div> -->
+ 
+ <div class="form-group">  
+  <div class="col-md-6 padding-0 padding-left">
+   <div class="col-md-4">
+	<label>Client Type</label>
+   </div>	
+   <div class="col-md-8">
+	<select  id="select12" name="sel_clientType" class="select2 form-control" ng-model="csvcolumn12"   aria-hidden="true" reqiured>
+      <option value="">Select Column</option>
+      <option ng-repeat="h in cvsHeaders" value="{{h}}">{{h}}</option>
+    </select>
+   </div>
+  </div>
+ </div>  
+  <div class="form-group col-md-12 text-right btn-pad">
+  <input class="btn btn-circle btn-md btn-primary" type="submit" ng-model="submit" value="upload data">
+	</div>
+ </form>
+</div>
+</div>
+
+<script>
+var Lists = [ 
+     document.getElementById("select2"), 
+     document.getElementById("select3"), 
+     document.getElementById("select4"),
+	 document.getElementById("select5"), 
+     //document.getElementById("select6"), 
+     //document.getElementById("select7"), 
+     document.getElementById("select8"),
+	 document.getElementById("select9"), 
+     document.getElementById("select10"), 
+     //document.getElementById("select11"), 
+     document.getElementById("select12")
+],
+     nbLists = Lists.length;
+
+
+// Binds change events to each list
+for(var iList = 0; iList < nbLists; iList++) {
+     Lists[iList].onchange = RemoveItems(iList);
+}
+
+
+function RemoveItems(iList) {
+     return function() {
+          var value = [];
+
+          // Add the selected items of all previous lists including the one changed
+          for(var jList = 0; jList <= iList; jList++)              value.push(Lists[jList].options[Lists[jList].selectedIndex].text);
+
+
+          // Hide in all succeeding lists these items
+          for(var kList = iList + 1; kList < nbLists; kList++)
+               HideItems(kList, value);
+     }
+}
+
+
+// Hide items selected in previous lists in all next lists
+function HideItems(iList, value) {
+     var nbOptions = Lists[iList].options.length,
+         nbValues = value.length,
+         found;
+
+     if(nbValues === 0) return;
+
+     for(var iOption = 0; iOption < nbOptions; iOption++) {
+          // Find if this element is present in the previous lists
+          found = false;
+          for(var iValue = 0; iValue < nbValues; iValue++) {
+               if(Lists[iList].options[iOption].text === value[iValue]) {
+                    found = true;
+                    break;
+               }
+          }
+
+          // If found, we hide it
+         if(found) {
+               Lists[iList].options[iOption].style.display = "none";
+             Lists[iList].options[iOption].selected = "";
+         }
+          // else we un-hide it (in case it was previously hidden)
+          else 
+               Lists[iList].options[iOption].style.display = "";
+     }
+}
+</script>

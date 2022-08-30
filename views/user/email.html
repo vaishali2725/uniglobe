@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-md-12">
+   <div class="todo-ui">
+      <div class="todo-content">
+         <div class="portlet light">
+
+            <div class="portlet-title">
+               <div class="caption">
+                  <i class="icon-bar-chart font-green hide"></i>
+                  <span class="caption-helper"></span> &nbsp;
+                  <span class="caption-subject font-green bold uppercase">Email</span>
+               </div>
+            </div>
+                    <!-- end PROJECT HEAD -->
+             <div class="portlet-body">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <div >
+                     <form class="form-horizontal adduserform" name="emailForm" ng-submit="sendmail()" >
+                        <div class="form">
+   
+<div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : emailForm.leadid.$invalid && !emailForm.leadid.$pristine }">
+<select  class="select2 form-control" ng-model="cemail.client_name" name="emailid" aria-hidden="true" reqiured>
+ <option value="">Select Client</option>
+  
+   <option  ng-repeat="client in myleads" value="{{client.leadid}},{{client.clientName}},{{client.email}}">{{client.clientName}}</option>
+  
+  </select>
+<p ng-show="emailForm.leadid.$invalid && !emailForm.leadid.$pristine" class="help-block">This field is required </p>
+ </div>
+ 
+ 
+  <div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : emailForm.subject.$invalid && !emailForm.subject.$pristine }">
+   <input type="text" class="form-control" ng-model="cemail.subject" name="subject" placeholder=" subject" required> 
+   <p ng-show="emailForm.subject.$invalid && !emailForm.subject.$pristine" class="help-block">This field is required </p>
+</div>
+
+<div class="form-group add-user col-md-12 col-sm-12" ng-class="{ 'has-error' : emailForm.description.$invalid && !emailForm.description.$pristine }">
+    <div class="input-icon right">
+       <textarea class="form-control" ng-model="cemail.message" name="description"  placeholder="Enter Message" rows="3" required></textarea>
+          <p ng-show="emailForm.description.$invalid && !emailForm.description.$pristine" class="help-block">Description is required</p>
+    </div>
+</div>
+
+<div class="form-actions right todo-form-actions">
+ <input class="btn btn-circle btn-md btn-primary" style="width:122px" type="submit" ng-model="submit" value="Send">
+</div>
+</div>
+   </form>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO CONTENT -->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="todo-ui">
+      <div class="todo-content">
+         <div class="portlet light">
+
+           <div class="portlet-title">
+               <div class="caption">
+                  <i class="icon-bar-chart font-green hide"></i>
+                  <span class="caption-helper"></span> &nbsp;
+                  <span class="caption-subject font-green bold uppercase">Sent Mail</span>
+               </div>
+            </div>
+			<div class="portlet-body">
+              <div class="row">
+			     <div style="min-height:300px;border:1px solid grey">
+				 
+				 
+				 <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+<thead>
+<tr>
+ <th>To</th>
+<th>Subject</th>
+<th>Message</th>
+<th>Date</th>
+</tr>
+</thead>                            
+<tbody>
+<tr ng-repeat="m in mail_history">
+<td>{{m.client_name}}</td>
+<td>{{m.subject}}</td>
+<td>{{m.message}}</td>
+<td>{{m.email_date}}</td>
+<!-- <td><a href="#/view_leads/{{lead.leadid}}"><button type="button" class="todo-username-btn btn btn-circle btn-default btn-sm" >&nbsp;View&nbsp;</button></a></span></td> -->
+</tr>
+</tbody>
+</table>
+				  
+				 </div>
+			 </div>
+           </div>
+         </div>
+      </div>
+    </div>        
+  </div>
+</div>
+
+
+
+<div id="emailModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Mail sent successfully </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>

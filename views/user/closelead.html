@@ -1,0 +1,332 @@
+<style>
+.messagebody{
+margin-top:30px;
+margin-left:10px;
+}
+.mailheaderinfo{
+background-color:#f9f9f9;
+}
+.txtlimit {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   max-width:200px;
+   line-height: 16px;     
+   max-height: 25px;      
+   -webkit-line-clamp: 2; 
+   -webkit-box-orient: vertical;
+}
+</style>
+
+
+
+<div class="row" style="margin-bottom:30px;" >
+
+<div class="col-md-5" style="margin-bottom:20px;">
+<td><a href="#/My_Leads"><button type="button" class="todo-username-btn btn btn-circle btn-default btn-sm" >&nbsp;Show Leads&nbsp;</button></a>
+</span></td>
+</div>
+<div class="col-md-12">
+<div class="col-md-5">
+<div class="tab-pane active new-details" id="tab_3">
+<div class="portlet box blue">
+<div class="portlet-title">
+<div class="caption">
+<i class="fa fa-gift"></i>Leads Details </div>
+<!-- <div class="tools">
+<a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+<a href="javascript:;" class="reload" data-original-title="" title=""> </a>                                  
+</div> -->
+</div>
+<div class="portlet-body form" ng-repeat="led in data.leadDetails">
+<div class="form-body" >
+<h4 class="margin-bottom-20"><i class="fa fa-user" aria-hidden="true"></i> Client Name : {{led.clientName}} </h4>
+<div class="row">
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Status :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.status}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Client Type :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.clientType}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Source:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.source}} </p>
+</div>
+</div>
+</div>
+
+<h4 class=" margin-bottom-20 col-md-12 margin-top1"><i class="fa fa-map-marker" aria-hidden="true"></i> Contact Details</h4>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="contact-title">Email :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.email}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="contact-title">Alternative E-mail:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.altemail}} </p>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-phone" aria-hidden="true"></i> <span class="contact-title">Contact No:</span></label>
+<div class="col-md-7">
+<p class="form-control-static">{{led.phone}} </p>
+</div>
+</div>
+</div>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-phone" aria-hidden="true"></i><span class="contact-title">Alternative Contact no:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.altphone}}</p>
+</div>
+</div>
+</div>
+</div>
+<!--/row-->
+<div class="row">
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-thumb-tack" aria-hidden="true"></i><span class="contact-title"> City :</span></label>
+<div class="col-md-7">
+<p class="form-control-static">{{led.city}}</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-globe" aria-hidden="true"></i><span class="contact-title"> Country:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.country}}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>	
+
+
+<div class="col-md-7">
+<div class="action-form" >
+<!-- <form name="actionForm" ng-submit="addAction()" >
+
+<div class="form-group col-md-6 col-sm-6 padding-0" ng-class="{ 'has-error' : actionForm.first_action.$invalid && !actionForm.first_action.$pristine }">
+<div class="input-icon right">
+<select class="form-control " id="status" name="first_action" ng-model="action.first_action" onchange="" required>
+<option value="">Select Action</option>
+ <option value="First Call">First Call </option>
+ <option value="Follow-Up">Follow-Up </option>
+ <option value="No-Reply">No-Reply </option>
+ <option value="Email">Email</option>
+ <option value="Not Reachable">Not Reachable</option>
+ <option value="Switched Off">Switched Off</option>
+ <option value="Wrong Details">Wrong Details</option>
+</select>
+<p ng-show="actionForm.first_action.$invalid && !actionForm.first_action.$pristine" class="help-block">Please select first_action</p> 
+</div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 padding-0" ng-class="{ 'has-error' : actionForm.nextaction.$invalid && !actionForm.nextaction.$pristine }">
+<div class="input-icon right">
+<select class="form-control " id="nextaction" name="nextaction" ng-model="action.next_action" onchange="" required>
+<option value="">Next Action</option>
+ <option value="Call"> Call </option>
+ <option value="Email">Email</option>
+ <option value="Meeting">Meeting</option>
+ <option value="Other">Other</option>
+ <option value="Close_Lead">Close Lead</option>
+</select>
+<p ng-show="actionForm.nextaction.$invalid && !actionForm.nextaction.$pristine" class="help-block">Please select status</p> 
+</div>
+</div>
+ 
+  <input ng-show="" class="form-control" type="text" name="lead_id" ng-model="action.leadid" ng-init="action.leadid=leadid" readonly="" />
+
+
+<input type="text" ng-show="" class="form-control"  ng-model="action.action_date" >
+
+<div class="form-group " ng-class="{ 'has-error' : actionForm.action_dec.$invalid && !actionForm.action_dec.$pristine }">
+<label>Description</label>
+<div class="input-icon right">
+  <textarea class="form-control" ng-model="action.action_des" name="action_dec" rows="3"></textarea>
+  <p ng-show="actionForm.action_dec.$invalid && !actionForm.action_dec.$pristine" class="help-block">Description is required</p>
+</div>
+</div>
+
+
+
+
+<div class="form-group">
+   <div class="col-md-6 padding-0">
+<div class="input-group date form_datetime">
+ <input type="text" id="datetimepicker" ng-model="action.appointmentDate" name="appointmentDate" readonly class="form-control">
+ <span class="input-group-btn">
+   <button class="btn default date-set" type="button">
+      <i class="fa fa-calendar"></i>
+   </button>
+ </span>
+</div>
+</div>
+</div>
+
+<input class="btn btn-circle btn-md btn-primary" type="submit" ng-model="$scope.action.submit" value="submit">
+
+
+</form> -->
+</div>
+
+<div class="portlet-body" style="margin-top:30px;">
+<table class="table table-striped table-bordered table-advance table-hover">
+<thead>
+<tr>
+<th>Call No.</th>
+<th><i class="fa fa-briefcase"></i> Status</th>
+<th class="hidden-xs"><i class="fa fa-question"></i> Descrition </th>
+<th><i class="fa fa-bookmark"></i> Date & Time </th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="action in data.action">
+<td><a href="javascript:;">{{action.actionid}}</a></td>
+<td class="hidden-xs"> {{action.first_action}}<span class="label label-success label-sm"> Paid </span> </td>
+<td> {{action.action_des}}</td>
+<td>{{action.appointmentDate}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div> 
+
+</div>
+</div>
+ 
+ 
+<div id="emailModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+     
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <div class="row">
+  <div class="col-md-12">
+   <div class="todo-ui">
+      <div class="todo-content">
+         <div class="portlet light">
+
+            <div class="portlet-title">
+               <div class="caption">
+                  <i class="icon-bar-chart font-green hide"></i>
+                  <span class="caption-helper"></span> &nbsp;
+                  <span class="caption-subject font-green bold uppercase">Email</span>
+               </div>
+			   
+            </div>
+                    <!-- end PROJECT HEAD -->
+             <div class="portlet-body">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <div >
+                   <form class="form-horizontal adduserform" name="emailForm" ng-submit="sendmail()" >
+                        <div class="form">
+   
+<div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : emailForm.leadid.$invalid && !emailForm.leadid.$pristine }">
+<select  class="select2 form-control" ng-model="cemail.client_name" name="emailid" aria-hidden="true" reqiured>
+ <option value="">Select Client</option>
+  
+   <option  ng-repeat="client in myleads" value="{{client.leadid}},{{client.clientName}},{{client.email}}">{{client.clientName}}</option>
+  
+  </select>
+<p ng-show="emailForm.leadid.$invalid && !emailForm.leadid.$pristine" class="help-block">This field is required </p>
+ </div>
+ 
+ 
+  <div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : emailForm.subject.$invalid && !emailForm.subject.$pristine }">
+   <input type="text" class="form-control" ng-model="cemail.subject" name="subject" placeholder=" subject" required> 
+   <p ng-show="emailForm.subject.$invalid && !emailForm.subject.$pristine" class="help-block">This field is required </p>
+</div>
+
+<div class="form-group add-user col-md-12 col-sm-12" ng-class="{ 'has-error' : emailForm.description.$invalid && !emailForm.description.$pristine }">
+    <div class="input-icon right">
+       <textarea class="form-control" ng-model="cemail.message" name="description"  placeholder="Enter Message" rows="3" required></textarea>
+          <p ng-show="emailForm.description.$invalid && !emailForm.description.$pristine" class="help-block">Description is required</p>
+    </div>
+</div>
+
+ <div  style="float:left;margin-left: 300px;">
+ <button class="btn btn-circle btn-md btn-primary" data-dismiss="modal" type="button" >Cancel</button>
+</div>
+<div class="form-actions right todo-form-actions">
+ <input class="btn btn-circle btn-md btn-primary" style="width:122px" type="submit" ng-model="submit" value="Send">
+</div>
+</div>
+   </form>
+  
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO CONTENT -->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+
+<div id="emailsuccessModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Mail sent successfully </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+$(function() {
+$( "#datetimepicker" ).datetimepicker();
+});
+</script>

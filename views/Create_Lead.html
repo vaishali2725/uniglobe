@@ -1,0 +1,236 @@
+
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Add Leads</a>
+        </li>
+    </ul>
+    
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN TODO SIDEBAR -->
+        <div class="todo-ui">
+            
+            <!-- END TODO SIDEBAR -->
+            <!-- BEGIN TODO CONTENT -->
+            <div class="todo-content">
+                <div class="portlet light">
+                    <!-- PROJECT HEAD -->
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-green hide"></i>
+                            <span class="caption-helper"></span> &nbsp;
+                            <span class="caption-subject font-green bold uppercase">Lead Information</span>
+                        </div>
+                      
+
+                    </div>
+                    <!-- end PROJECT HEAD -->
+                    <div class="portlet-body">
+                        <div class="row">
+                               <div class="col-md-12 col-sm-12">
+                                <div style="min-height: 600px;">
+                                     <form class="form-horizontal adduserform" name="leadForm" ng-submit="addLeads()" >
+                                         <div class="form">
+   
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.country.$invalid && !leadForm.country.$pristine }">
+<select name="userid" class="select2 form-control" ng-model="lead.userid" name="userid" aria-hidden="true" reqiured>
+ <option value="">Select Lead Owner</option>
+  <option ng-repeat="u in user" value="{{u.userid}}">{{u.firstName}} {{u.lastName}}</option>
+ </select>
+<p ng-show="leadForm.userid.$invalid && !leadForm.userid.$pristine" class="help-block">Please Select owner </p>
+ </div>
+
+  <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.clientName.$invalid && !leadForm.clientName.$pristine }">
+   <input type="text" class="form-control" ng-model="lead.clientName" name="clientName" placeholder="Enter client name" required> 
+   <p ng-show="leadForm.clientName.$invalid && !leadForm.clientName.$pristine" class="help-block">Client name is required</p>
+  </div>
+  
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.email.$invalid && !leadForm.email.$pristine }">
+<input type="email" class="form-control" ng-model="lead.email" id="email" name="email" placeholder="E-mail" ng-blur="checkleadavailability()"  >
+<p ng-show="leadForm.email.$invalid && !leadForm.email.$pristine" class="help-block">Enter valid E-mail ID</p>
+ </div>
+  
+
+ <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.altemail.$invalid && !leadForm.altemail.$pristine }">
+ <input type="email" class="form-control"  pw-check="email" ng-model="lead.altemail" name="altemail" placeholder="Alternative E-mail"> 
+ <p ng-show="leadForm.altemail.$invalid && !leadForm.altemail.$pristine" class="help-block">Repeated Email-Please enter another email address</p>
+</div>
+
+ <!-- <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.altphone.$invalid && !leadForm.altphone.$pristine }">
+   <input type="number" class="form-control"  pw-check="phone"  ng-model="lead.altphone" name="altphone" placeholder="Alternative Contact Number" ng-minlength="10" ng-maxlength="10" required>
+   <p ng-show="leadForm.altphone.$invalid && !leadForm.altphone.$pristine" class="help-block">Please enter valid mobile number </p>
+ </div>   -->
+<!-- <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.city.$invalid && !leadForm.city.$pristine }">
+  <input type="text" class="form-control" ng-model="lead.city" name="city" placeholder="City" required> 
+<p ng-show="leadForm.city.$invalid && !leadForm.city.$pristine" class="help-block">Please enter city name </p>
+</div> -->
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.country.$invalid && !leadForm.country.$pristine }">
+<select name="country" class="select2 form-control" ng-model="lead.country" ng-change="onchange(lead.country.mcode)"  ng-options="country as country.name for country in countries"  required>
+      <option value="">Select Country</option>
+  </select>
+<p ng-show="leadForm.country.$invalid && !leadForm.country.$pristine" class="help-block">Please select country </p>
+ </div>
+
+ 
+<div class="form-group add-user col-md-6 col-sm-6 ">
+ <div class="form-group add-user col-md-3 col-sm-3">
+<input type="text"  class="form-control" ng-model="lead.countrycode" id="countrycode" name="countrycode" readonly> 
+</div>
+ 
+<div class="form-group add-user col-md-9 col-sm-9" ng-class="{ 'has-error' : leadForm.phone.$invalid && !leadForm.phone.$pristine }">
+
+<input type="text" pattern="[0-9.]+" class="form-control" ng-model="lead.phone" id="phone" name="phone" placeholder="Mobile Number" required> 
+<p ng-show="leadForm.phone.$invalid && !leadForm.phone.$pristine" class="help-block">Please enter valid mobile number</p>
+</div>
+</div>
+
+
+<div class="form-group add-user col-md-6 col-sm-6 ">
+ <div class="form-group add-user col-md-3 col-sm-3">
+<input type="text"  class="form-control" ng-model="lead.countrycode" id="countrycode" name="countrycode" readonly> 
+</div>
+ 
+<div class="form-group add-user col-md-9 col-sm-9" ng-class="{ 'has-error' : leadForm.altphone.$invalid && !leadForm.altphone.$pristine }">
+
+<input type="text" pattern="[0-9.]+" class="form-control" ng-model="lead.altphone" id="altphone" name="phone" placeholder="alternate Mobile Number" > 
+<p ng-show="leadForm.altphone.$invalid && !leadForm.altphone.$pristine" class="help-block">Please enter valid mobile number</p>
+</div>
+</div>
+
+
+<div class="form-group add-user col-md-6 col-sm-12" ng-class="{ 'has-error' : leadForm.register_date.$invalid && !leadForm.register_date.$pristine }">
+  <input type="text" id="example4" class="form-control ng-invalid ng-invalid-required ng-touched" ng-model="lead.register_date" name="register_date" placeholder="Select register Date" required>
+ <p ng-show="leadForm.register_date.$invalid && !leadForm.register_date.$pristine" class="help-block">Please enter register Date </p>
+  </div>
+  
+  <div class="form-group add-user col-md-6 col-sm-12" ng-class="{ 'has-error' : leadForm.ac_number.$invalid && !leadForm.ac_number.$pristine }">
+  <input type="number" id="ac_number" class="form-control ng-invalid ng-invalid-required ng-touched" ng-model="lead.ac_number" name="ac_number" placeholder="Enter Account Number" >
+ <p ng-show="leadForm.ac_number.$invalid && !leadForm.ac_number.$pristine" class="help-block">Please enter Account Number</p>
+  </div>
+
+
+  <div class="portlet-title col-md-12 col-sm-12 padding-left">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-green hide"></i>
+                            <span class="caption-helper"></span> &nbsp;
+                            <span class="caption-subject font-green bold uppercase">More Information</span>
+                        </div>
+ </div>
+
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.status.$invalid && !leadForm.status.$pristine }">
+<select name="status" class="select2 form-control" ng-model="lead.status" name="status" aria-hidden="true" required>
+ <option value="">Select Lead Status</option>
+  <option value="Active">Active</option>
+  <option value="New Lead">New Lead</option>
+  <option value="Irrelevant">Irrelevant</option>
+  <option value="Not Interested">Not Interested</option>
+ </select>
+<p ng-show="leadForm.status.$invalid && !leadForm.status.$pristine" class="help-block">Please select status </p>
+ </div>
+
+<div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : leadForm.source.$invalid && !leadForm.source.$pristine }">
+<select name="source" ng-change="lead_source(lead.source)" class="select2 form-control" ng-model="lead.source" ng-init="lead.source=l.source" name="source" aria-hidden="true" required>
+<option value="">Select Lead Source</option>
+<option value="Freelancer">Freelancer</option>
+<option value="Upwork">Upwork</option>
+<option value="Other">Other</option>
+</select>
+<p ng-show="leadForm.source.$invalid && !leadForm.source.$pristine" class="help-block">Please select source </p>
+</div>
+
+ 
+<div ng-show="other" class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : leadForm.other_source.$invalid && !leadForm.other_source.$pristine }">
+<input type="text" class="form-control" ng-model="lead.other_source" name="other_source" placeholder="lead source" required> 
+<p ng-if="other" ng-show="leadForm.other_source.$invalid && !leadForm.other_source.$pristine" class="help-block">Please enter lead source  </p>
+</div>
+ 
+ 
+<!-- <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.accountNumber.$invalid && !leadForm.accountNumber.$pristine }">
+<input type="number" class="form-control" ng-model="lead.accountNumber" name="accountNumber" placeholder="Account Number" minlenth="10" maxlenght="15" required> 
+<p ng-show="leadForm.accountNumber.$invalid && !leadForm.accountNumber.$pristine" class="help-block">Please enter valid account number</p>
+</div>
+ -->
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.clientType.$invalid && !leadForm.clientType.$pristine }">
+<select name="clientType" class="select2 form-control" ng-model="lead.clientType" name="status" aria-hidden="true" required>
+ <option value="">Client Type</option>
+ <option value="Individual">Individual</option>
+  <option value="Introducery Broker">Introducery Broker</option>
+  <option value="Corporate">Corporate</option>
+   <option value="Affiliate">Affiliate</option>
+ </select>
+<p ng-show="leadForm.clientType.$invalid && !leadForm.clientType.$pristine" class="help-block">Please select status </p>
+ </div>
+ 
+ <div  class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : leadForm.technologies.$invalid && !leadForm.technologies.$pristine }">
+<input type="text" class="form-control" ng-model="lead.technologies" name="technologies" placeholder="Add Technologies" required> 
+<p ng-if="other" ng-show="leadForm.technologies.$invalid && !leadForm.technologies.$pristine" class="help-block">Please enter Technologies </p>
+</div>
+ 
+ 
+<div class="form-actions left todo-form-actions col-md-6 col-sm-6 padding-left">
+ <input class="btn btn-circle btn-md btn-primary" type="submit" ng-model="submit" value="Add Leads">
+
+</div>
+</div>
+   </form>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO CONTENT -->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Lead Added successfully to your task list</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
+<!-- END PAGE CONTENT-->
+<script>
+    AppTodo2.init(); // init todo page
+	
+	$(function(){
+   
+	
+	$('#example4').datepicker({
+        format: 'yyyy/mm/dd'
+    }).on('changeDate',  function (ev) {
+        $(this).datepicker('hide');
+    });
+	
+	
+	
+	
+          
+        
+    }); 
+</script>

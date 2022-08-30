@@ -1,0 +1,390 @@
+<style>
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%; 
+    height: 400px;
+	margin-bottom:20px;
+}
+.btn:not(.btn-sm):not(.btn-lg){
+line-height: 0.64;
+    margin-left: 20px;
+    margin-top: 3px;
+}
+</style>
+
+
+<div ng-show="editleadform" class="al_leads">
+
+<div class="col-md-12" style="margin-bottom:20px;">
+<td><a href="" ng-click="show_list()"><button type="button" class="todo-username-btn btn btn-circle btn-default btn-sm" >&nbsp;Show Leads&nbsp;</button></a>
+</span></td>
+</div>
+
+    <form class="form-horizontal adduserform" name="leadForm" ng-submit="updatelead(lead,l.leadid,code)"  ng-repeat="l in leadtoedit">
+   <div class="form" >
+   
+<!-- <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.country.$invalid && !leadForm.country.$pristine }">
+<select name="userid" class="select2 form-control" ng-model="lead.userid" name="userid" aria-hidden="true" reqiured>
+ <option value="">Select Lead Owner</option>
+  <option ng-repeat="u in user" value="{{u.userid}}">{{u.firstName}} {{u.lastName}}</option>
+ </select>
+<p ng-show="leadForm.userid.$invalid && !leadForm.userid.$pristine" class="help-block">Please Select owner </p>
+ </div> -->
+
+  <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.clientName.$invalid && !leadForm.clientName.$pristine }">
+   <input type="text" class="form-control" ng-model="lead.clientName" ng-init="lead.clientName=l.clientName" name="clientName" placeholder="Enter client name" required> 
+   <p ng-show="leadForm.clientName.$invalid && !leadForm.clientName.$pristine" class="help-block">Client name is required</p>
+  </div>
+  
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.email.$invalid && !leadForm.email.$pristine }">
+<input type="email" class="form-control" ng-model="lead.email" ng-init="lead.email=l.email" id="email" name="email" placeholder="E-mail" ng-blur="checkleadavailability()"  required>
+<p ng-show="leadForm.email.$invalid && !leadForm.email.$pristine" class="help-block">Enter valid E-mail ID</p>
+ </div>
+  
+
+ <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.altemail.$invalid && !leadForm.altemail.$pristine }">
+ <input type="email" class="form-control"  pw-check="email" ng-model="lead.altemail" ng-init="lead.altemail=l.altemail" name="altemail" placeholder="Alternative E-mail"> 
+ <p ng-show="leadForm.altemail.$invalid && !leadForm.altemail.$pristine" class="help-block">Repeated Email-Please enter another email address</p>
+</div>
+
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.country.$invalid && !leadForm.country.$pristine }">
+<select name="country" class="select2 form-control" ng-model="lead.country" ng-init="lead.country=l.country" ng-change="onchange(lead.country.mcode)"
+      ng-options="country as country.name for country in countries"  required>
+         <option value="">Select Country</option>               
+</select>
+<p ng-show="leadForm.country.$invalid && !leadForm.country.$pristine" class="help-block">Please select country </p>
+ </div>
+
+<div class="form-group add-user col-md-6 col-sm-6 padding-left ">
+ <div class="form-group add-user col-md-3 col-sm-3">
+<input type="text"  class="form-control" ng-model="code"   id="code" name="code" readonly > 
+</div>
+<div class="form-group add-user col-md-9 col-sm-9 padding-left" ng-class="{ 'has-error' : leadForm.phone.$invalid && !leadForm.phone.$pristine }">
+<input type="text" pattern="[0-9.]+" class="form-control" ng-model="lead.phone" ng-init="lead.phone=l.phone"  id="phone" name="phone" placeholder="Mobile Number" > 
+<p ng-show="leadForm.phone.$invalid && !leadForm.phone.$pristine" class="help-block">Please enter valid mobile number</p>
+</div>
+ </div>
+ <div class="form-group add-user col-md-6 col-sm-12" ng-class="{ 'has-error' : leadForm.register_date.$invalid && !leadForm.register_date.$pristine }">
+  <input type="text" id="example6" class="form-control ng-invalid ng-invalid-required ng-touched" ng-model="lead.register_date" ng-init="lead.register_date=l.register_date" name="register_date" placeholder="Select register Date" required>
+ <p ng-show="leadForm.srtdate.$invalid && !leadForm.srtdate.$pristine" class="help-block">Please enter register Date </p>
+  </div>
+
+   <div class="form-group add-user col-md-6 col-sm-12" ng-class="{ 'has-error' : leadForm.ac_number.$invalid && !leadForm.ac_number.$pristine }">
+  <input type="text" id="ac_number" class="form-control ng-invalid ng-invalid-required ng-touched" ng-model="lead.ac_number"  ng-init="lead.ac_number=l.ac_number" name="ac_number"  placeholder="Enter Account Number" required>
+ <p ng-show="leadForm.ac_number.$invalid && !leadForm.ac_number.$pristine" class="help-block">Please enter Account Number</p>
+  
+  </div>
+ 
+ <div class="form-group add-user col-md-6 col-sm-6 ">
+<div class="form-group add-user col-md-3 col-sm-3">
+<input type="text"  class="form-control" ng-model="code"   id="code" name="code" readonly > 
+</div>
+ 
+<div class="form-group add-user col-md-9 col-sm-9" ng-class="{ 'has-error' : leadForm.altphone.$invalid && !leadForm.altphone.$pristine }">
+
+<input type="text" pattern="[0-9.]+" class="form-control" ng-model="lead.altphone" id="altphone" name="phone" ng-init="lead.altphone=l.altphone" placeholder="alternate Mobile Number" required> 
+<p ng-show="leadForm.altphone.$invalid && !leadForm.altphone.$pristine" class="help-block">Please enter valid mobile number</p>
+</div>
+</div>
+ 
+ <div class="portlet-title col-md-12 col-sm-12 padding-left">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-green hide"></i>
+                            <span class="caption-helper"></span> &nbsp;
+                            <span class="caption-subject font-green bold uppercase">More Information</span>
+                        </div>
+ </div>
+
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.status.$invalid && !leadForm.status.$pristine }">
+<select name="status" class="select2 form-control" ng-model="lead.status" ng-init="lead.status=l.status" name="status" aria-hidden="true" required>
+ <option value="">Select Lead Status</option>
+ <option value="Active">Active</option>
+  <option value="New Lead">New Lead</option>
+  <option value="Irrelevant">Irrelevant</option>
+  <option value="Not Interested">Not Interested</option>
+ </select>
+<p ng-show="leadForm.status.$invalid && !leadForm.status.$pristine" class="help-block">Please select status </p>
+ </div>
+
+<div class="form-group col-md-6 col-sm-6 padding-left">
+<input class="form-control" ng-model="lead.source"   ng-init="lead.source=l.source"  name="source" placeholder="lead source" > 
+</div>
+ 
+ 
+<!-- <div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.accountNumber.$invalid && !leadForm.accountNumber.$pristine }">
+<input type="number" class="form-control" ng-model="lead.accountNumber" name="accountNumber" placeholder="Account Number" minlenth="10" maxlenght="15" required> 
+<p ng-show="leadForm.accountNumber.$invalid && !leadForm.accountNumber.$pristine" class="help-block">Please enter valid account number</p>
+</div>
+ -->
+<div class="form-group add-user col-md-6 col-sm-6 padding-left" ng-class="{ 'has-error' : leadForm.clientType.$invalid && !leadForm.clientType.$pristine }">
+<select name="clientType" class="select2 form-control" ng-model="lead.clientType" ng-init="lead.clientType=l.clientType"   name="clientType" aria-hidden="true" required>
+ <option value="">Client Type</option>
+  <option value="Individual">Individual</option>
+  <option value="Introducery Broker">Introducery Broker</option>
+  <option value="Corporate">Corporate</option>
+   <option value="Affiliate">Affiliate</option>
+ </select>
+<p ng-show="leadForm.clientType.$invalid && !leadForm.clientType.$pristine" class="help-block">Please select status </p>
+ </div>
+<div class="form-actions left todo-form-actions col-md-6 col-sm-6 padding-left">
+ <input class="btn btn-circle btn-md btn-primary" type="submit" ng-model="submit" value="Update Lead">
+
+</div>
+</div>
+   </form>
+   
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div ng-hide="all_leads">
+            <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li><i class="fa fa-home"></i>
+                                <a href="#/dashboard.html">Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="#" ng-click="get_All_leads()">All Leads</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                             <li>
+                                <a href="#" ng-click="get_pending_leads()">Pending Leads</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+							 <li>
+                                <a href="#" ng-click="get_closed_leads()">Closed Leads</a>
+								<i class="fa fa-angle-right"></i>
+                            </li>
+							<li>
+                                <a href="#" ng-click="get_unass_leads()">Unassigned Leads</a>
+                            </li>
+                        </ul>
+                    
+                    </div>
+					<!-- <h3 class="page-title"> All Leads </h3> -->
+					
+				
+                    <!-- END PAGE BAR -->
+                    <!-- BEGIN PAGE TITLE-->
+                    
+                    <!-- END PAGE TITLE-->
+                    <!-- END PAGE HEADER-->
+					
+					
+		<div ng-if="isDirectiveLoaded">
+          <div class="gridStyle" ng-grid="leaddatadis">
+        </div> 
+		<div class="col-md-12 padding-0">
+		
+			
+			<div class="">
+				
+					<div  style="margin:10px 0;     float: right;" >
+						<a ng-show="showleadassbtn"  class="edit btn btn-primary btn-circle"  ng-click="t_leads(leaddatadis.selectedItems)"   href="#">Assign Leads</a>
+					</div>
+				
+				
+					<div ng-show="showtransferbtn"  class="lead-transf">
+						<a class="edit btn btn-primary btn-circle" ng-click="t_leads(leaddatadis.selectedItems)" href="#">Lead Transfer</a>
+					</div>
+				
+				
+				
+					<div  style="" class="delete-lead">
+						<a ng-click="delete_leads(leaddatadis.selectedItems)" class="edit btn btn-primary btn-circle" href="#">Delete Leads</a>
+					</div>
+				
+			</div>
+			
+		</div>
+		
+  		</div>	
+</div>			
+
+			
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+            <h4 class="modal-title" id="myModalLabel">Lead Transfer</h4>
+            </div>
+
+            <div class="modal-body">
+		   <div ng-repeat="l in leaddata" class="form-group">
+			 <label for="owner">Current Owner:<label><input  type="text" value="{{l.firstName}} {{l.lastName}}"/>
+			</div>		
+			<form method="post" ng-submit="transferLead(leaddatadis.selectedItems)" name="myForm">
+			
+			
+			 <input type="hidden" ng-init="change.leadid=leadid" ng-value="" name="leadid" ng-model="change.leadid" >
+			<label>Transfer Owner:<label>
+			<select ng-model="transfer.updateuserid" class="form-group" name="lowner"required>
+			   <option value="">Select Lead Owner</option>
+			  <option ng-repeat="lu in leadupdatedata" value="{{lu.userid}}">{{lu.firstName}} {{lu.lastName}}</option>
+			</select>
+			
+				
+			<input type="submit" id="popup" class="btn btn-primary"/>
+			</form>
+			
+			
+			
+			
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <!--   <button type="button" class="btn btn-primary">Save changes</button> -->
+				
+
+        </div>
+					
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="basicModal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+            <h4 class="modal-title" id="myModalLabel">Lead Transfer</h4>
+            </div>
+            <div class="modal-body">
+			<div>Lead Transfer Successfully</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+					
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="DModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+            <h4 class="modal-title" id="myModalLabel">Lead Delete</h4>
+            </div>
+            <div class="modal-body">
+			<div>Please select client</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+        </div>
+					
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="AModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+            <h4 class="modal-title" id="myModalLabel">Lead Assign</h4>
+            </div>
+            <div class="modal-body">
+			<div>Please select client</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+        </div>
+					
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="TModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+            <h4 class="modal-title" id="myModalLabel">Lead Transfer</h4>
+            </div>
+            <div class="modal-body">
+			<div>Please select client</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+        </div>
+					
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteleadmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+			<div>Lead deleted Successfully</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="updateleadmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+			<div>Lead Data Updated Successfully</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".edit").click(function(){
+        $('#basicModal').modal();
+    });
+	
+	$("#popup").click(function(){
+	
+	var x = document.forms["myForm"]["lowner"].value;
+    if (x == null || x == "") {
+        alert("Please select Owner");
+        return false;
+    }
+	 $('#basicModal').modal('hide');
+	
+        $('#basicModal1').modal();
+    });
+	
+	
+	$(function(){
+   
+	
+	$('#example6').datepicker({
+        format: 'yyyy/mm/dd'
+    }).on('changeDate',  function (ev) {
+        $(this).datepicker('hide');
+    });
+	
+	
+	
+	
+          
+        
+    }); 
+});
+
+
+</script>
+					
+               

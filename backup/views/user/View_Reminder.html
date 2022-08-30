@@ -1,0 +1,41 @@
+<div ng-hide="hide_leads">
+<div class="row">
+<div class="col-md-12">
+<div class="portlet-title" style="margin-bottom: 15px;">
+<div class="caption">
+<i class="icon-bar-chart font-green-sharp hide"></i>
+<span class="caption-subject font-green-sharp bold uppercase">All Reminders</span>
+</div>
+</div>
+<div class="portlet light portlet-fit bordered">
+<div class="portlet-body">
+<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+<thead>
+<tr>
+<th> Client Name </th>
+<th> Title</th>
+<th> Action</th>
+<th>Date </th>
+<th> Description </th>
+<th> Edit </th>
+<th> Delete</th>
+</tr>
+</thead>                            
+<tbody>
+<tr ng-repeat="r in reminders">
+<td>{{r.client_name}}</td>
+<td>{{r.reminderTitle}} </td>
+<td>{{r.action}} </td>
+<td>{{r.reminderDate}}</td>
+<td>{{r.description}}</td>
+<td><a>edit</a></td>
+<td> <a ng-click="deleteReminder(r.R_id)" class="delete" href="javascript:;"> Delete </a></td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>

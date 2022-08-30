@@ -1,0 +1,188 @@
+ <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <a href="#/dashboard">Home</a>
+                                <i class="fa fa-circle"></i>
+                            </li>
+                            <li>
+                                <span>User</span>
+                            </li>
+                        </ul>
+                      
+                    </div>
+                    <!-- END PAGE BAR -->
+                    <!-- BEGIN PAGE TITLE-->
+                    <h3 class="page-title"> User Profile
+                    </h3>
+                    <!-- END PAGE TITLE-->
+                    <!-- END PAGE HEADER-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- BEGIN PROFILE SIDEBAR -->
+                            <div class="profile-sidebar">
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light profile-sidebar-portlet ">
+                                    <!-- SIDEBAR USERPIC -->
+                                    <div class="profile-userpic">
+                                        <img src="assets/pages/media/profile/profile_user.jpg" class="img-responsive" alt=""> </div>
+                                    <!-- END SIDEBAR USERPIC -->
+                                    <!-- SIDEBAR USER TITLE -->
+                                    <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name"> Marcus Doe </div>
+                                      
+                                    </div>
+                                    <!-- END SIDEBAR USER TITLE -->
+                                    <!-- SIDEBAR BUTTONS -->
+                                   
+                                    <!-- END SIDEBAR BUTTONS -->
+                                    <!-- SIDEBAR MENU -->
+                               
+                                    <!-- END MENU -->
+                                </div>
+                                <!-- END PORTLET MAIN -->
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light ">
+                                    <!-- STAT -->
+                                    <div class="row list-separated profile-stat">
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 37 </div>
+                                            <div class="uppercase profile-stat-text"> Projects </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 51 </div>
+                                            <div class="uppercase profile-stat-text"> Tasks </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 61 </div>
+                                            <div class="uppercase profile-stat-text"> Uploads </div>
+                                        </div>
+                                    </div>
+                                    <!-- END STAT -->
+                                  
+                                </div>
+                                <!-- END PORTLET MAIN -->
+                            </div>
+                            <!-- END BEGIN PROFILE SIDEBAR -->
+                            <!-- BEGIN PROFILE CONTENT -->
+                            <div class="profile-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="portlet light ">
+                                            <div class="portlet-title tabbable-line">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-globe theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+                                                </div>
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active">
+                                                        <a href="#tab_1_1" data-toggle="tab" aria-expanded="true">Personal Info</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="#tab_1_2" data-toggle="tab" aria-expanded="false">Change Picture</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="#tab_1_3" data-toggle="tab" aria-expanded="false">Change Password</a>
+                                                    </li>
+                                                   
+                                                </ul>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="tab-content">
+                                                    <!-- PERSONAL INFO TAB -->
+<div class="tab-pane active" id="tab_1_1" ng-repeat="user in myProfile">
+<form role="form" name="userForm" ng-submit="updateInfo()"  novalidate>
+<div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && !userForm.firstName.$pristine }">
+<label class="control-label">First Name</label>
+<input type="text"  class="form-control" ng-model="user.firstName"  name="firstName"  required>
+ <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine" class="help-block">First name is required.</p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : userForm.lastName.$invalid && !userForm.lastName.$pristine }">
+<label class="control-label">Last Name</label>
+<input type="text"  class="form-control" ng-model="user.lastName" name="lastName" required> 
+<p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">Last name is required.</p>
+</div>
+<div class="form-group" ng-class="{ 'has-error' : userForm.useremail.$invalid && !userForm.useremail.$pristine }">
+<label class="control-label">Email</label>
+<input type="email"  class="form-control" ng-model="user.useremail" name="useremail" required>
+<p ng-show="userForm.useremail.$invalid && !userForm.useremail.$pristine" class="help-block">Enter Valid Email.</p> </div>
+
+<div class="form-group" ng-class="{ 'has-error' : userForm.userphone.$invalid && !userForm.userphone.$pristine }">
+<label class="control-label">Phone </label>
+<input type="text" class="form-control" ng-model="user.userphone" name="userphone" pattern="[0-9]" minlength="10" required>
+<p ng-show="userForm.userphone.$invalid && !userForm.userphone.$pristine" class="help-block">Enter Valid Phone Number.</p>
+ </div>
+<div class="form-group" ng-class="{ 'has-error' : userForm.usercity.$invalid && !userForm.usercity.$pristine }">
+<label class="control-label">City</label>
+<input type="text" class="form-control" ng-model="user.usercity" name="usercity" required> 
+<p ng-show="userForm.usercity.$invalid && !userForm.usercity.$pristine" class="help-block">This field is required</p></div>
+<div class="margiv-top-10">
+<input type="submit" value="update" name="submit" ng-model="submit" class="btn green">
+<a href="javascript:;" class="btn default" > Cancel </a>
+</div>
+</form>
+                                                    </div>
+                                                    <!-- END PERSONAL INFO TAB -->
+                                                    <!-- CHANGE AVATAR TAB -->
+<div class="tab-pane" id="tab_1_2">
+<form action="#" role="form">
+<div class="form-group">
+<div class="fileinput fileinput-new" data-provides="fileinput">
+<div>
+<span class="btn default btn-file">
+<span class="fileinput-new"> Select image </span>
+<input type="file" name="..."> </span>
+</div>
+</div>
+<div class="clearfix margin-top-10">
+<span class="label label-danger">Image size should be A px * B px </span>
+</div>
+</div>
+<div class="margin-top-10">
+<a href="javascript:;" class="btn green"> Submit </a>
+<a href="javascript:;" class="btn default"> Cancel </a>
+</div>
+</form>
+</div>
+                                                   
+                                                    <!-- END CHANGE AVATAR TAB -->
+                                                    <!-- CHANGE PASSWORD TAB -->
+                                                    <div class="tab-pane" id="tab_1_3">
+<form name="passwordForm" ng-submit="changePassword()">
+<div class="form-group" ng-class="{ 'has-error' : passwordForm.currentPassword.$invalid && !passwordForm.currentPassword.$pristine }">
+<label class="control-label">Current Password</label>
+<input type="password" class="form-control" ng-model="user.currentPassword" name="currentPassword" placeholder="Current Password" required> 
+<p ng-show="passwordForm.currentPassword.$invalid && !passwordForm.currentPassword.$pristine" class="help-block">Please enter Current password</p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : passwordForm.newPassword.$invalid && !passwordForm.newPassword.$pristine }">
+<label class="control-label">New Password</label>
+<input type="password" class="form-control"  ng-model="password.newPassword" name="newPassword" placeholder="Current Password" required> 
+<p ng-show="passwordForm.newPassword.$invalid && !passwordForm.newPassword.$pristine" class="help-block">Enter password </p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : passwordForm.newPasswordAgain.$invalid && !passwordForm.newPasswordAgain.$pristine }">
+<label class="control-label">Re-type New Password</label>
+<input type="password" class="form-control" ng-model="password.newPasswordAgain" name="newPasswordAgain" placeholder="Current Password" required>
+<p ng-show="passwordForm.newPasswordAgain.$invalid && !passwordForm.newPasswordAgain.$pristine" class="help-block">Enter password </p>
+ </div>
+<div class="margin-top-10">
+<button ng-model="password.submit" class="btn green"> Change Password </button>
+<a href="javascript:;" class="btn default"> Cancel </a>
+</div>
+</form>
+                                                    </div>
+                                                    <!-- END CHANGE PASSWORD TAB -->
+                                                    <!-- PRIVACY SETTINGS TAB -->
+                                                  
+                                                    <!-- END PRIVACY SETTINGS TAB -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END PROFILE CONTENT -->
+                        </div>
+                    </div>
+                </div>

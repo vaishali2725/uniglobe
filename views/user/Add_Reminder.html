@@ -1,0 +1,164 @@
+
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Add Reminder</a>
+        </li>
+    </ul>
+    
+</div>
+
+
+
+
+<h3 class="page-title"> Add Reminder </h3>
+<div class="success_msg">{{message}}</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN TODO SIDEBAR -->
+   <div class="todo-ui">
+            
+     <!-- END TODO SIDEBAR -->
+     <!-- BEGIN TODO CONTENT -->
+      <div class="todo-content">
+         <div class="portlet light">
+            <!-- PROJECT HEAD -->
+            <!-- <div class="portlet-title">
+               <div class="caption">
+                  <i class="icon-bar-chart font-green hide"></i>
+                  <span class="caption-helper"></span> &nbsp;
+                  <span class="caption-subject font-green bold uppercase">ADD Reminder</span>
+               </div>
+            </div> -->
+                    <!-- end PROJECT HEAD -->
+            <div class="portlet-body">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 padding-0">
+                  <div style="min-height: 600px;">
+                     <form class="form-horizontal adduserform" name="reminderForm" ng-submit="addReminder(ctime)" >
+                        <div class="form">
+   
+<div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : reminderForm.leadid.$invalid && !reminderForm.leadid.$pristine }">
+<select  class="select2 form-control" ng-model="reminder.client_name" name="client_name" aria-hidden="true" required>
+ <option value="">Select Client</option>
+  
+   <option  ng-repeat="client in allleads" value="{{client.clientName}}-{{client.leadid}}">{{client.clientName}}</option>
+  
+  </select>
+<p ng-show="reminderForm.leadid.$invalid && !reminderForm.leadid.$pristine" class="help-block">This field is required </p>
+ </div>
+
+  <div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : reminderForm.reminderTitle.$invalid && !reminderForm.reminderTitle.$pristine }">
+   <input type="text" class="form-control" ng-model="reminder.reminderTitle" name="reminderTitle" placeholder="Enter Title of Reminder" required> 
+   <p ng-show="reminderForm.reminderTitle.$invalid && !reminderForm.reminderTitle.$pristine" class="help-block">Reminder title is required</p>
+</div>
+
+ 
+ <!--<div class="form-group add-user col-md-12 col-sm-12" ng-class="{ 'has-error' : reminderForm.reminderDate.$invalid && !reminderForm.reminderDate.$pristine }">
+   <input type="text" class="form-control" ng-model="reminder.reminderDate" name="reminderDate" placeholder="Set Date" required> 
+   <p ng-show="reminderForm.reminderDate.$invalid && !reminderForm.reminderDate.$pristine" class="help-block">Reminder Date is required</p>
+ </div>--> 
+
+<div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : reminderForm.reminderDate.$invalid && !reminderForm.reminderDate.$pristine }">
+<div class="input-group date form_datetime">
+ <input type="text" size="16" id="datetimepicker" ng-model="reminder.reminderDate" name="reminderDate" placeholder="Set Date"  class="form-control" required>
+ <span class="input-group-btn">
+   <button class="btn default date-set" type="button">
+      <i class="fa fa-calendar"></i>
+   </button>
+ </span>
+</div>
+   <p ng-show="reminderForm.reminderDate.$invalid && !reminderForm.reminderDate.$pristine" class="help-block">Reminder Date is required</p>
+</div>
+
+
+
+<!-- <div class="form-group add-user col-md-12 col-sm-12" ng-class="{ 'has-error' : reminderForm.reminderTime.$invalid && !reminderForm.reminderTime.$pristine }">
+   <input type="text" class="form-control" ng-model="reminder.reminderTime" name="remindertime" placeholder="Set Time" required> 
+   <p ng-show="reminderForm.reminderTime.$invalid && !reminderForm.reminderTime.$pristine" class="help-block">Reminder Date is required</p>
+ </div>
+ -->
+
+
+ <div class="form-group add-user col-md-6 col-sm-6" ng-class="{ 'has-error' : reminderForm.action.$invalid && !reminderForm.action.$pristine }">
+    <div class="input-icon right">
+         <select class="form-control " id="status" name="action" ng-model="reminder.action"  required>
+            <option value="">Action</option>
+             <option value="call">Call</option>
+             <option value="email">Email</option>
+			 <option value="email">Meeting</option>
+             <option value="data_update">Data Update</option>
+         </select>
+         <p ng-show="reminderForm.action.$invalid && !reminderForm.action.$pristine" class="help-block">Please select status</p> 
+    </div>
+</div>
+
+<div class="form-group add-user col-md-12 col-sm-12" ng-class="{ 'has-error' : reminderForm.reminder_dec.$invalid && !reminderForm.reminder_dec.$pristine }">
+    <div class="input-icon right">
+       <textarea class="form-control" ng-model="reminder.description" name="reminder_dec"  placeholder="Enter Reminder Description" rows="3" required></textarea>
+          <p ng-show="reminderForm.reminder_dec.$invalid && !reminderForm.reminder_dec.$pristine" class="help-block">Description is required</p>
+    </div>
+</div>
+
+<div class="form-actions right todo-form-actions btn-pad">
+ <input class="btn btn-circle btn-md btn-primary" style="width:122px" type="submit" ng-model="submit" value="Add Reminder">
+</div>
+</div>
+   </form>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO CONTENT -->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+
+
+
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Reminder Added successfully</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
+<!-- END PAGE CONTENT-->
+<script>
+    AppTodo2.init(); // init todo page
+</script>
+
+<script>
+$(function() {
+//$( "#datetimepicker" ).datetimepicker();
+var dateToday = new Date(); 
+    $( "#datetimepicker" ).datetimepicker({
+        startDate: dateToday
+    });
+});
+</script>
+

@@ -1,0 +1,200 @@
+<style>
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%; 
+    height: 300px;
+	margin-bottom:20px;
+}
+.filterhead{
+margin-bottom:20px;
+float:left;
+}
+.filterbtn{
+margin-left: 20px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+.radiobtn{
+margin-bottom:20px;
+}
+#example1,#example2,#example3,#filter_button
+{
+display:none;
+}
+.btn:not(.btn-sm):not(.btn-lg) {
+    line-height: 1.44;
+    line-height: 0.64;
+    margin-left: 20px;
+    margin-top: 3px;
+}
+
+</style>
+<div class="todo-ui">
+ <div class="todo-content">
+   <div class="portlet light">
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+             <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#" ng-click="getall_leads()">Report</a>
+        </li>
+    </ul>
+</div>
+
+
+
+
+<form id="myForm">
+<div class="filterhead">
+   <select id="suser" ng-model="sel_user" ng-change="filter_data(sel_user)" 
+       data-ng-options="u as u.firstName for u in user_data">
+      <option value="">Select User</option>
+  </select>  
+  <select id="sstatus" ng-model="sel_status" ng-change="filterby_status(sel_status)">
+      <option value="">Select status</option>
+	  <option value="First Call">First Call</option>
+	  <option value="Follow-Up">Follow-Up</option>
+	  <option value="Email">Email</option>
+	  <option value="Not Reachable">Not Reachable</option>
+	  <option value="Switched Off">Switched Off</option>
+	  <option value="Wrong Details">Wrong Details</option>
+  </select> 
+  
+</div>
+
+
+<!--<input type="radio"  ng-model="user1" value="monthly"  ><label>monthly record</label><br>
+<input type="radio"  ng-model="user1" value="weekly"  ><label>Weekly Record</label><br>
+<input type="radio"  ng-model="user" ng-value="daily" ><label>Today</label><br>
+</div>-->
+<div class="radiobtn">
+
+<!--<input type="radio" value="5" name="monthdata" ng-model="user" ng-click="getalleads()" ng-init="getalleads()" id="radio_all">All-->
+<input type="radio" value="2" name="monthdata" ng-model="user" ng-click="get_monthly_leads(sel_user,sel_status)"id="radio_month">Monthly
+
+<input type="radio"  value="1" name="monthdata" ng-model="user" ng-click="get_weekly_leads(sel_user,sel_status)"  id="radio_week">weekly
+
+<input type="radio" value="3" name="monthdata" ng-model="user" id="radio_daily"> Daily
+
+<input type="radio" value="4" name="monthdata" ng-model="user" id="radio_range"> Date Range
+</div>
+
+<input type="text" style="margin-left:10px;" id="example1" placeholder="select date" class="datepick" ng-model="sel_date" >
+<input type="text" style="margin-left:10px;" id="example2" placeholder="select from date" class="datepick" ng-model="sel_date1" >
+<input type="text" style="margin-left:10px;" id="example3" placeholder="select to date" class="datepick" ng-model="sel_date2" >
+
+
+<button type="button" id="btn1" ng-click="filterby_daterange(sel_user,sel_status,sel_date1,sel_date2)" class=" btn filterbtn btn-default" >Filter</button>
+<button type="button" id="btn2" ng-click="filter_daily_data(sel_user,sel_status,sel_date)" class=" btn filterbtn btn-default" >Filter</button>
+
+
+
+
+</form>
+
+<div class='mydiv text-right'>    
+    <textarea ng-show="" id="txt" ng-model="grid_data" class='txtarea'></textarea>
+    <button ng-click="JSONToCSVConvertor(grid_data,sel_user,sel_status,user)" class='btn btn-primary' style="margin-top:-70px;">Generate CSV Report</button>
+</div>
+
+<div ng-if="isDirectiveLoaded">
+    <div class="gridStyle" ng-grid="grid_report ">
+</div> 	  
+  
+  <div ng-controller="ViewReportController">
+      <div ui-grid="gridOptions" ui-grid-selection ui-grid-exporter class="grid"></div>
+    </div>
+ </div> 
+</div> 
+</div>  
+ 
+ 
+ 
+ 
+ 
+
+<script type="text/javascript">
+
+   //$( ".datepick" ).datepicker();
+       /*$("#example1").on("change",function(){
+	  
+        var selected = $(this).val();
+       
+		//document.getElementById("demo").innerHTML = selected;
+		//document.getElementById('user_date').value = selected;
+    });*/
+	//var date = jQuery('.datepick').datepicker({ dateFormat: 'yy-dd-mm' }).val();
+	
+
+//$('.datepick').datepicker({ dateFormat: 'yy.mm.dd' }); 
+
+	
+	
+	
+$(function(){
+    $('#example1').datepicker({
+        format: 'yyyy/mm/dd'
+    }).on('changeDate',  function (ev) {
+        $(this).datepicker('hide');
+    }); 
+	
+	$('#example2').datepicker({
+        format: 'yyyy/mm/dd'
+    }).on('changeDate',  function (ev) {
+        $(this).datepicker('hide');
+    });
+	
+	$('#example3').datepicker({
+        format: 'yyyy/mm/dd'
+    }).on('changeDate',  function (ev) {
+        $(this).datepicker('hide');
+    });
+	
+	
+          $('#btn2').hide();
+			$('#btn1').hide();
+	$("#radio_daily,#radio_range,#radio_month,#radio_week").change(function () {
+	       
+        if ($("#radio_daily").is(":checked")) {
+            $('#example1').show();
+			$('#btn2').show();
+			$('#btn1').hide();
+			$('#example2').hide();
+			$('#example3').hide();
+        }
+        else if ($("#radio_range").is(":checked")) {
+            $('#example2').show();
+			$('#example3').show();
+			$('#btn1').show();
+			$('#btn2').hide();
+			$('#example1').hide();
+	    }
+		else if($("#radio_month").is(":checked"))
+		{
+		   $('#example1').hide(); 
+		   $('#example2').hide();
+		   $('#example3').hide();
+		   $('#btn1').hide();
+		   $('#btn2').hide();
+		   $('#filter_button').hide();
+		}
+		else if($("#radio_week").is(":checked"))
+		{
+		   $('#example1').hide(); 
+		   $('#example2').hide();
+		   $('#example3').hide();
+		   $('#filter_button').hide();
+		     $('#btn1').hide();
+		   $('#btn2').hide();
+		}
+        
+    });        
+
+});
+   
+ </script>  
+ 

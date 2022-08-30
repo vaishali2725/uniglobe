@@ -1,0 +1,27 @@
+.add-user{
+	margin-right: 15px!important;
+}
+
+.btn-circle{
+    border-radius: 30px!important;
+    margin-right: 0px;
+    height: 35px;
+    width: 100px;
+   font-size:15px;
+   
+}
+.cancelbtn{
+	margin-right:25px;
+}
+.adduserform input[]{
+	border-radius:3px;
+}
+.adduserform .form-control:focus{
+	border-color:#3A404A;
+}
+.adduserform  .btn-default:hover{
+	background-color:rgb(54, 198, 211);
+}
+.page-container{
+	margin-top: 46px!important;
+}

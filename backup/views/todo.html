@@ -1,0 +1,106 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Todo</a>
+        </li>
+    </ul>
+ 
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN TODO SIDEBAR -->
+        <div class="todo-ui">
+            
+            <!-- END TODO SIDEBAR -->
+            <!-- BEGIN TODO CONTENT -->
+            <div class="todo-content">
+                <div class="portlet light">
+                    <!-- PROJECT HEAD -->
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-green hide"></i>
+                            <span class="caption-helper"></span> &nbsp;
+                            <span class="caption-subject font-green bold uppercase">Pending Tasks</span>
+                        </div>
+                     </div>
+                    <!-- end PROJECT HEAD -->
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div style="min-height: 600px;">
+                                    <div class="todo-tasklist" ng-repeat="task in tasks | filter : filterTask">
+                                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                                         <div class="todo-tasklist-item-title"> {{task.taskName}} </div>
+                                            <div class="todo-tasklist-item-text"> {{task.Details}} </div>
+                                            <div class="todo-tasklist-controls pull-left">
+                                                <span class="todo-tasklist-date">
+                                                    <i class="fa fa-calendar"></i> {{task.deadLine}}</span>
+                                                <span class="todo-tasklist-badge badge badge-roundless">{{task.status}}</span>
+												<a ng-click="deleteTask(task.taskid)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-devider"> </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div style="min-height: 600px;">
+                                    <form class="form-horizontal" >
+                                        <!-- TASK HEAD -->
+                                        <div class="form">
+                                          
+                                            <!-- END TASK HEAD -->
+                                            <!-- TASK TITLE -->
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control todo-taskbody-tasktitle" ng-model="task.taskName" name="taskName" placeholder="Task Title..."> </div>
+                                            </div>
+                                            <!-- TASK DESC -->
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <textarea class="form-control todo-taskbody-taskdesc" ng-model="task.Details" name="Details" rows="8" placeholder="Task Description..."></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- END TASK DESC -->
+                                            <!-- TASK DUE DATE -->
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="input-icon">
+                                                        <i class="fa fa-calendar"></i>
+                                                        <input type="text" class="form-control todo-taskbody-due" ng-model="task.deadLine" name="deadLine" placeholder="Due Date..."> </div>
+                                                </div>
+                                            </div>
+                                            <!-- TASK TAGS -->
+                                           
+                                            <!-- TASK TAGS -->
+                                            <div class="form-actions right todo-form-actions">
+                                                <button class="btn btn-circle btn-sm green" ng-click="addTask()">Save Changes</button>
+                                                <button class="btn btn-circle btn-sm btn-default">Cancel</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO CONTENT -->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+<!-- END PAGE CONTENT-->
+<script>
+    AppTodo2.init(); // init todo page
+</script>

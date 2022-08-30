@@ -1,0 +1,208 @@
+
+<div class="row" style="margin-bottom:30px;" >
+
+<div class="col-md-5" style="margin-bottom:20px;">
+<td><a href="#/All_Leads"><button type="button" class="todo-username-btn btn btn-circle btn-default btn-sm" >&nbsp;Show Leads&nbsp;</button></a>
+</span></td>
+</div>
+<div class="col-md-12">
+<div class="col-md-5">
+<div class="tab-pane active new-details" id="tab_3">
+<div class="portlet box blue">
+<div class="portlet-title">
+<div class="caption">
+<i class="fa fa-gift"></i>Leads Details </div>
+<div class="tools">
+<a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+<a href="javascript:;" class="reload" data-original-title="" title=""> </a>                                  
+</div>
+</div>
+<div class="portlet-body form" ng-repeat="led in data.leadDetails">
+<div class="form-body" >
+
+
+<div class="row">
+<h4 class="margin-bottom-20"><i class="fa fa-user" aria-hidden="true"></i> Lead Owner : {{led.firstName}} {{led.lastName}} </h4>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">City :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.usercity}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Mail :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.useremail}} </p>
+</div>
+</div>
+</div>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Phone :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.userphone}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Designation :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.designation}} </p>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div class="row">
+<h4 class="margin-bottom-20"><i class="fa fa-user" aria-hidden="true"></i> Client Name : {{led.clientName}} </h4>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Status :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.status}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Client Type :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.clientType}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Source:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.source}} </p>
+</div>
+</div>
+</div>
+
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">Lead Register:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.register_date}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><span class="contact-title">A/C Number:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.ac_number}} </p>
+</div>
+</div>
+</div>
+
+<h4 class=" margin-bottom-20 col-md-12 margin-top1"><i class="fa fa-map-marker" aria-hidden="true"></i> Contact Details</h4>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="contact-title">Email :</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.email}} </p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="contact-title">Alternative E-mail:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.altemail}} </p>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-phone" aria-hidden="true"></i> <span class="contact-title">Contact No:</span></label>
+<div class="col-md-7">
+<p class="form-control-static">{{led.phone}} </p>
+</div>
+</div>
+</div>
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-phone" aria-hidden="true"></i><span class="contact-title">Alternative Contact no:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.altphone}}</p>
+</div>
+</div>
+</div>
+</div>
+<!--/row-->
+<div class="row">
+<div class="col-md-12 border-bottom-1">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-thumb-tack" aria-hidden="true"></i><span class="contact-title"> City :</span></label>
+<div class="col-md-7">
+<p class="form-control-static">{{led.city}}</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 border-bottom-1 border-bottom-12">
+<div class="form-group">
+<label class="control-label col-md-5"><i class="fa fa-globe" aria-hidden="true"></i><span class="contact-title"> Country:</span></label>
+<div class="col-md-7">
+<p class="form-control-static"> {{led.country}}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>	
+
+
+<div class="col-md-7">
+
+<div class="portlet-body">
+<table class="table table-striped table-bordered table-advance table-hover th-width">
+<thead>
+<tr>
+<th class="th1">Call No.</th>
+<th class="th1">First action</th>
+<th class="th1">Next action</th>
+<th class="hidden-xs"> Description </th>
+<th class="th3"> Action Date & Time </th>
+<th class="th3"> Next Action Date & Time </th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="action in actions">
+<td><a href="javascript:;">{{action.actionid}}</a></td>
+<td class="hidden-xs"> {{action.first_action}} </td>
+<td class="hidden-xs"> {{action.next_action}}  </td>
+<td class="desc-wrd"> {{action.action_des}}</td>
+<td>{{action.action_date}}</td>
+<td>{{action.appointmentDate}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div> 
+
+</div>
+</div>  
+
